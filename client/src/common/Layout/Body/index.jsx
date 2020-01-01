@@ -1,25 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { Breadcrumb, Button, Layout } from 'antd';
+import { Breadcrumb, Layout } from 'antd';
 import getBreadcrumbs from '../../../utilities/getBreadcrumbs';
 import getLocationPaths from '../../../utilities/getLocationPaths';
-
+import Home from '../../Routes/Home';
+import Chat from '../../Routes/Chat';
 const { Content } = Layout;
-
-const Home = () => {
-  return (
-		<div>
-		</div>
-	);
-}
-
-const Chat = () => {
-  return (
-		<div>
-			<Button>Chat</Button>
-		</div>
-	);
-}
 
 class Body extends PureComponent {
 	render() {

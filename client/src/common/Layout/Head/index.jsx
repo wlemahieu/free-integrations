@@ -1,21 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import logo from '../../../assets/images/logo.png';
+import Logo from '../../Logo';
 import allowedPaths from '../../../utilities/allowedPaths';
 import getLocationPaths from '../../../utilities/getLocationPaths';
 
 const { Header } = Layout;
-
-const Logo = () => {
-	return (
-		<img
-			className="logo"
-			src={logo}
-			alt="Logo"
-		/>
-	);
-}
 
 const MenuBar = props => {
 	const currentPath = props.paths.length ? props.paths[props.paths.length - 1] : '/';
