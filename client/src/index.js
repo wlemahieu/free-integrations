@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import { Layout } from 'antd';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Body from './common/Layout/Body';
+import Head from './common/Layout/Head';
+import Foot from './common/Layout/Foot';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const App = () => {
+  return (
+		<Layout>
+			<Head />
+			<Body />
+			<Foot />
+    </Layout>
+  );
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
