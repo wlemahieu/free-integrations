@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import logo from '../../../assets/images/logo.png';
-import utils from '../../../utilities';
+import allowedPaths from '../../../utilities/allowedPaths';
+import getLocationPaths from '../../../utilities/getLocationPaths';
 
 const { Header } = Layout;
 
@@ -17,9 +18,8 @@ const Logo = () => {
 }
 
 const MenuBar = props => {
-	const possiblePaths = ['/', '/chat'];
 	const currentPath = props.paths.length ? props.paths[props.paths.length - 1] : '/';
-	const pathMatch = possiblePaths.includes(currentPath);
+	const pathMatch = allowedPaths.includes(currentPath);
 	const selectedKeys = pathMatch ? currentPath : '';
 	return (
 		<Menu
@@ -42,7 +42,7 @@ const MenuBar = props => {
 class Head extends PureComponent {
 	render() {
 		const { location } = this.props;
-		const paths = utils.getLocationPaths(location);
+		const paths = getLocationPaths(location);
 		return (
 			<Header>
 				<Logo />
