@@ -6,19 +6,29 @@ import Conversation from '../../../modules/Conversation';
 class Chat extends PureComponent {
 	onSearch = input => {
 		if (input) {
-			const { dispatch } = this.props;
-			console.log('onSearch dispatch USER_INPUT');
-			console.log(input);
-			dispatch({ type: 'USER_INPUT', payload: { input } });
+			this.props.dispatch({ type: 'SAVE_USER_INPUT', payload: input });
+		}
+	};
+
+	updateInput = input => {
+		if (input) {
+			this.props.dispatch({ type: 'USER_KEY_PRESS', payload: input });
 		}
 	};
 
 	render() {
-		console.log('render props ', this.props);
+		const disabledSubmit = this.props.chat.inputs.length !== this.props.chat.responses.length;
+		const input = this.props.chat.input;
+		const chatInputProps = {
+			disabledSubmit,
+			input,
+			onSearch: this.onSearch,
+			updateInput: this.updateInput
+		};
 		return (
 			<div>
-				<ChatInput onSearch={this.onSearch}/>
-				<Conversation responses={this.props.responses}/>
+				<ChatInput {...chatInputProps} />
+				<Conversation chat={this.props.chat} />
 			</div>
 		);
 	}
@@ -26,9 +36,13 @@ class Chat extends PureComponent {
 
 const mapStateToProps = state => {
 	return {
-		inputs: state.inputs,
-		responses: state.responses
-	}
+		chat: {
+			...state.chat,
+			input: state.chat.input,
+			inputs: [...state.chat.inputs],
+			responses: [...state.chat.responses]
+		}
+	};
 };
 
 export default connect(mapStateToProps)(Chat);

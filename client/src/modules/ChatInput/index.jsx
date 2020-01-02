@@ -4,16 +4,8 @@ import { Col, Input, Row } from 'antd';
 const { Search } = Input;
 
 class ChatInput extends PureComponent {
-	constructor(props) {
-		super(props);
-		this.state = { input: '' };
-	}
-
-	updateInput = input => {
-		this.setState({ input });
-	};
-
 	render() {
+		const { disabledSubmit, input } = this.props;
 		return (
 			<Row className="centered" style={{ paddingTop: '40px' }}>
 				<Col span={12} offset={6}>
@@ -21,8 +13,10 @@ class ChatInput extends PureComponent {
 					placeholder="What's on your mind?"
 					enterButton
 					size="large"
-					onChange={e => this.updateInput(e.target.value)}
-					onSearch={e => this.props.onSearch(this.state.input)}
+					onChange={e => this.props.updateInput(e.target.value)}
+					onSearch={e => this.props.onSearch(input)}
+					disabled={disabledSubmit}
+					value={input}
 				/>
 				</Col>
 			</Row>
@@ -31,10 +25,14 @@ class ChatInput extends PureComponent {
 }
 
 ChatInput.propTypes = {
+	disabledSubmit: PropTypes.bool,
+	input: PropTypes.string,
 	onSearch: PropTypes.func
 };
 
 ChatInput.defaultProps = {
+	disabledSubmit: false,
+	input: '',
 	onSearch: () => {}
 };
 

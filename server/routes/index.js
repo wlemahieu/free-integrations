@@ -9,7 +9,8 @@ const corsOptions = {
 };
 
 router.post('/', cors(corsOptions), (req, res, next) => {
-	const input = req.query.input;
+	const input = req.query.payload;
+	console.log('post / input ', input);
 	scraper(input)
 		.then(response => {
 			res.send(response);
