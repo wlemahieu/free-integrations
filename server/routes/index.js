@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import scraper from '../scraper/index.js';
+
 const router = express.Router();
 const corsOptions = {
 	origin: 'http://localhost:3001',
@@ -8,8 +10,16 @@ const corsOptions = {
 
 router.post('/', cors(corsOptions), (req, res, next) => {
 	const input = req.query.input;
-	console.log('input ', input);
-	res.send(`Input Received (${input}) Responding Shortly...`);
+	scraper(input)
+		.then(response => {
+			res.send(response);
+		})
+		.catch(error => {
+			console.log('error ', error);
+		})
+		.finally(() => {
+			// console.log('finally finished');
+		});
 });
 
 export default router;

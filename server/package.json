@@ -4,8 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "cleverbot": "^1.0.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ibm-watson": "^5.2.1",
+    "puppeteer": "^2.0.0"
   },
   "devDependencies": {
     "concurrently": "^5.0.2",
@@ -16,5 +19,5 @@
     "server": "nodemon --experimental-modules index.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-	"type": "module"
+  "type": "module"
 }

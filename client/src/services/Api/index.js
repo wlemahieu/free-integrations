@@ -43,10 +43,6 @@ class Api {
 	}
 
 	post(url, params, options = {}) {
-		console.log('post');
-		console.log('url ', url);
-		console.log('params ', params);
-		console.log('options ', options);
 		const defaultOptions = {
 			url,
 			params,
