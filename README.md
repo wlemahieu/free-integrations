@@ -1,2 +1,2 @@
 # clever-watson-bot
-Combines IBM Watson Text-to-Speech API with Cleverbot API for fun conversations with a robot.
+Harnesses the power of IBM Watson API and taps into a 3rd-party AI Bot named Rose for some lively conversations.
