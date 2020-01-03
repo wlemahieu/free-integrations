@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import fs from 'fs';
-import scraper from '../scraper/index.js';
+import { rose } from '../rose/index.js';
 import textToSpeech from '../watson/text-to-speech/index.js';
 
 const router = express.Router();
@@ -10,28 +10,32 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 };
 
-router.post('/', cors(corsOptions), (req, res, next) => {
-	const input = req.query.payload;
-	scraper(input)
+const processInput = async (payload, res) => {
+	const uuid = payload.name;
+	const audioFileName = `./conversations/${uuid}-audio.wav`;
+	const roseResponse = await rose(payload);
+	const params = {
+	  text: roseResponse,
+	  accept: 'audio/wav',
+	  voice: 'en-US_AllisonVoice',
+	};
+	textToSpeech.synthesize(params)
 		.then(response => {
-			const params = {
-			  text: response,
-			  accept: 'audio/wav',
-			  voice: 'en-US_AllisonVoice',
-			};
-			textToSpeech.synthesize(params)
-				.then(response => {
-					const audio = response.result;
-					return textToSpeech.repairWavHeaderStream(audio);
-				})
-				.then(repairedFile => {
-					fs.writeFileSync('audio.wav', repairedFile);
-					res.send(response);
-				})
-				.catch(err => {
-					console.log(err);
-				});
-	});
-});
+			const audio = response.result;
+			return textToSpeech.repairWavHeaderStream(audio);
+		})
+		.then(repairedFile => {
+			if (fs.existsSync(audioFileName)) {
+				fs.unlinkSync(audioFileName);
+			}
+			fs.writeFileSync(audioFileName, repairedFile);
+			res.send(roseResponse);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
+router.post('/', cors(corsOptions), (req, res) => processInput(req.query, res));
 
 export default router;

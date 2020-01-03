@@ -2,11 +2,25 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ChatInput from '../../../modules/ChatInput';
 import Conversation from '../../../modules/Conversation';
+import uuid from 'uuid';
 
 class Chat extends PureComponent {
+	constructor() {
+		super();
+		this.state = {
+			name: uuid()
+		}
+	};
+
 	onSearch = input => {
 		if (input) {
-			this.props.dispatch({ type: 'SAVE_USER_INPUT', payload: input });
+			const name = this.state.name;
+			const payload = {
+				input,
+				name
+			};
+			console.log('payload ', payload);
+			this.props.dispatch({ type: 'SAVE_USER_INPUT', payload });
 		}
 	};
 

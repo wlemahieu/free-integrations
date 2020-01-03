@@ -4,17 +4,17 @@
 // http://brilligunderstanding.com/rosedemo.html
 
 import puppeteer from 'puppeteer';
-import uuid from 'uuid';
 
-const name = uuid();
 const roseUrl = 'http://ec2-54-215-197-164.us-west-1.compute.amazonaws.com/speech.php';
 
 const extractRoseText = (text) => {
 	return text.split(/\n/)[1].replace('Rose: ', '').trim(); // User is line 1, Rose is line 2, empty line 3.
 };
 
-const scrape = async (message) => {
+export const rose = async (payload) => {
 	try {
+		const input = payload.input;
+		const name = payload.name;
 		// launch browser and visit Rose AI
 	  const browser = await puppeteer.launch();
 	  const page = await browser.newPage();
@@ -26,16 +26,15 @@ const scrape = async (message) => {
 		// update the message input and submit
 		const messageInput = await page.$('#txtMessage');
 		await messageInput.click({ clickCount: 3 });
-		await messageInput.type(message);
+		await messageInput.type(input);
 		await page.keyboard.press('Enter', {delay: 1000});
 		// extract text response
 		const text = await page.evaluate(() => document.querySelector('#responseHolder').innerText);
 		const extractedText = extractRoseText(text);
 		await browser.close();
+		console.log('rose text ', extractedText);
 		return extractedText;
 	} catch (e) {
 		console.log(e);
 	}
 };
-
-export default scrape;

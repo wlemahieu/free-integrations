@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
 		case types.SAVE_USER_INPUT: {
       return {
         ...state,
-				inputs: [...state.inputs, action.payload]
+				inputs: [...state.inputs, action.payload.input]
       };
     }
 		case types.SAVE_USER_KEY: {

@@ -1,3 +1,3 @@
 import Api from '../Api';
 
-export const sendInput = input => Api.post('/', { payload: input });
+export const sendInput = payload => Api.post('/', payload);
