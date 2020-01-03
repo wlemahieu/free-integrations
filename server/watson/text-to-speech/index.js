@@ -1,12 +1,17 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import Watson from 'ibm-watson/sdk.js';
 import WatsonAuth from 'ibm-watson/auth/index.js';
 
 const { TextToSpeechV1 } = Watson;
 const { IamAuthenticator } = WatsonAuth;
-const instance = '56a70a2c-3d2a-4e45-b6cf-30f14d3fd42f';
-const baseUrl = 'https://api.us-south.text-to-speech.watson.cloud.ibm.com';
 
-const authenticator = new IamAuthenticator({ apikey: 'ykt7UIE7Kw_ALOxjfTiAlwG2xYrS98l5iRW6i_UXtzoR' });
+const apikey = process.env.WATSON_KEY;
+const instance = process.env.WATSON_TTS_INSTANCE;
+const baseUrl = process.env.WATSON_TTS_URL;
+
+const authenticator = new IamAuthenticator({ apikey });
 const url = baseUrl.concat('/instances/').concat(instance);
 const textToSpeech = new TextToSpeechV1({ authenticator, url });
 

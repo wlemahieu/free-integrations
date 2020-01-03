@@ -6,6 +6,7 @@
   "dependencies": {
     "cleverbot": "^1.0.1",
     "cors": "^2.8.5",
+    "dot-env": "^0.0.1",
     "express": "^4.17.1",
     "ibm-watson": "^5.2.1",
     "puppeteer": "^2.0.0",
