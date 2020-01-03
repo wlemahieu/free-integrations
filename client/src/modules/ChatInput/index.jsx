@@ -10,7 +10,7 @@ class ChatInput extends PureComponent {
 			<Row className="centered" style={{ paddingTop: '40px' }}>
 				<Col span={12} offset={6}>
 				<Search
-					placeholder="What's on your mind?"
+					placeholder="Say something to Rose Watson"
 					enterButton
 					size="large"
 					onChange={e => this.props.updateInput(e.target.value)}
