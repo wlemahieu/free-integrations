@@ -19,7 +19,7 @@
   },
   "scripts": {
     "client": "cd ../client && yarn start",
-    "server": "nodemon --experimental-modules index.js",
+    "server": "nodemon -r dotenv/config --experimental-modules index.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "type": "module"

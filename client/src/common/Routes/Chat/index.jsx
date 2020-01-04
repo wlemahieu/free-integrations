@@ -19,7 +19,6 @@ class Chat extends PureComponent {
 				input,
 				name
 			};
-			console.log('payload ', payload);
 			this.props.dispatch({ type: 'SAVE_USER_INPUT', payload });
 		}
 	};

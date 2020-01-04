@@ -1,24 +1,25 @@
 import React, { PureComponent } from 'react';
 import { Col, Row, Timeline } from 'antd';
-import { map } from 'lodash';
+import { each, map } from 'lodash';
 
 const createTimeline = (inputs, responses) => {
-	return map(inputs, (value, key) => {
-		return {
-			input: value,
-			response: responses[key]
-		};
+	const timeline = [];
+	each(inputs, (value, key) => {
+		timeline.unshift(value);
+		if (responses[key]) {
+			timeline.unshift(responses[key]);
+		}
 	});
+	return timeline;
 };
 
-const createTimelineItems = (conversation) => {
-	return map(conversation, (piece, key) => {
-		return (
-			<div key={key}>
-				<Timeline.Item key={`me-${key}`}>{piece.input}</Timeline.Item>
-				<Timeline.Item color="green" key={`ai-${key}`}>{piece.response}</Timeline.Item>
-			</div>
-		);
+const createTimelineItems = (timeline) => {
+	const timelineEven = timeline.length % 2 === 0;
+	return map(timeline, (text, index) => {
+		const indexEven = index % 2 === 0;
+		const color = (!indexEven && timelineEven) || (indexEven && !timelineEven) ? 'blue' : 'green';
+		const key = color === 'blue' ? `me-${index}` : `ai-${index}`;
+		return <Timeline.Item color={color} key={key}>{text}</Timeline.Item>;
 	});
 };
 

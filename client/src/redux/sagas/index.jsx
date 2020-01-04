@@ -4,7 +4,6 @@ import * as types from '../actionTypes';
 
 export function* sendInput(action) {
 	try {
-		console.log('sendInput action ', action);
 		const inputResponse = yield call(ChatApi.sendInput, action.payload);
 		const payload = inputResponse.data;
 		yield put({ type: 'SAVE_AI_RESPONSE', payload });

@@ -2,11 +2,9 @@
 // http://brilligunderstanding.com/aboutus.html
 // Their AI Bot named Rose had the most interested conversational responses out of most the bots I tested.
 // http://brilligunderstanding.com/rosedemo.html
-
 import puppeteer from 'puppeteer';
 
 const roseUrl = 'http://ec2-54-215-197-164.us-west-1.compute.amazonaws.com/speech.php';
-
 const extractRoseText = (text) => {
 	return text.split(/\n/)[1].replace('Rose: ', '').trim(); // User is line 1, Rose is line 2, empty line 3.
 };
@@ -32,7 +30,6 @@ export const rose = async (payload) => {
 		const text = await page.evaluate(() => document.querySelector('#responseHolder').innerText);
 		const extractedText = extractRoseText(text);
 		await browser.close();
-		console.log('rose text ', extractedText);
 		return extractedText;
 	} catch (e) {
 		console.log(e);
