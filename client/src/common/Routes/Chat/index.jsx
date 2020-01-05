@@ -8,7 +8,8 @@ class Chat extends PureComponent {
 	constructor() {
 		super();
 		this.state = {
-			name: uuid()
+			name: uuid(),
+			audioPlayed: false
 		}
 	};
 
@@ -19,6 +20,7 @@ class Chat extends PureComponent {
 				input,
 				name
 			};
+			this.setState({ audioPlayed: false })
 			this.props.dispatch({ type: 'SAVE_USER_INPUT', payload });
 		}
 	};
@@ -30,6 +32,7 @@ class Chat extends PureComponent {
 	};
 
 	render() {
+		const inputs = this.props.chat.inputs.length;
 		const disabledSubmit = this.props.chat.inputs.length !== this.props.chat.responses.length;
 		const input = this.props.chat.input;
 		const chatInputProps = {
@@ -38,10 +41,16 @@ class Chat extends PureComponent {
 			onSearch: this.onSearch,
 			updateInput: this.updateInput
 		};
+		if (inputs && !disabledSubmit && !this.state.audioPlayed) {
+			const audio = new Audio(`http://localhost:3000/${this.state.name}-audio.wav?decache=${Math.random()}`);
+			audio.play();
+			this.setState({ audioPlayed: true })
+		}
 		return (
 			<div>
 				<ChatInput {...chatInputProps} />
 				<Conversation chat={this.props.chat} />
+
 			</div>
 		);
 	}

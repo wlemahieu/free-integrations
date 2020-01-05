@@ -4,12 +4,17 @@ import { Col, Input, Row } from 'antd';
 const { Search } = Input;
 
 class ChatInput extends PureComponent {
+	componentDidUpdate() {
+		this.roseInput.focus();
+	}
 	render() {
 		const { disabledSubmit, input } = this.props;
 		return (
 			<Row className="centered" style={{ paddingTop: '40px' }}>
 				<Col span={12} offset={6}>
 				<Search
+					autoFocus={true}
+					ref={(search) => { this.roseInput = search; }}
 					placeholder="Say something to Rose Watson"
 					enterButton
 					size="large"
