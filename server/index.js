@@ -14,4 +14,4 @@ var staticFilesOptions = {
 
 app.use('/', routes);
 app.use(express.static('conversations', staticFilesOptions));
-app.listen(port, () => console.log('\x1b[36m', `CleverWatson listening on port ${port}!`));
+app.listen(port, () => console.log('\x1b[36m', `Rose-Watson-Bot listening on port ${port}!`));

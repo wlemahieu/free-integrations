@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
 import ChatInput from '../../../modules/ChatInput';
 import Conversation from '../../../modules/Conversation';
-import uuid from 'uuid';
 
 class Chat extends PureComponent {
 	constructor() {
@@ -50,7 +50,6 @@ class Chat extends PureComponent {
 			<div>
 				<ChatInput {...chatInputProps} />
 				<Conversation chat={this.props.chat} />
-
 			</div>
 		);
 	}

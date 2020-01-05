@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { Col, Row, Timeline } from 'antd';
 import { each, map } from 'lodash';
 
@@ -30,9 +31,11 @@ class Conversation extends PureComponent {
 		return (
 			<Row className="centered" style={{ paddingTop: '60px' }}>
 				<Col span={12} offset={6}>
-					<Timeline mode="alternate">
-						{createTimelineItems(timeline)}
-					</Timeline>
+					<Scrollbars style={{ height: 600 }}>
+						<Timeline mode="alternate" style={{ paddingRight: '20px' }}>
+							{createTimelineItems(timeline)}
+						</Timeline>
+					</Scrollbars>
 				</Col>
 			</Row>
 		);
