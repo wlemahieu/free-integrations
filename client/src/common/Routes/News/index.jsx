@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'antd';
-import Sources from '../../../modules/NewsSources';
+import Sources from '../../../modules/News/Sources';
 
 class News extends PureComponent {
 	constructor() {

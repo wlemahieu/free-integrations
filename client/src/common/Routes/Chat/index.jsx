@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import ChatInput from '../../../modules/ChatInput';
-import Conversation from '../../../modules/Conversation';
+import ChatInput from '../../../modules/Chat/Input';
+import Conversation from '../../../modules/Chat/Conversation';
 
 class Chat extends PureComponent {
 	constructor() {
