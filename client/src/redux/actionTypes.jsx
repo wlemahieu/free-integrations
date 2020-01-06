@@ -3,3 +3,7 @@ export const SAVE_USER_INPUT = 'SAVE_USER_INPUT';
 export const SAVE_USER_KEY = 'SAVE_USER_KEY';
 export const AI_RESPONSE_FAILED = 'AI_RESPONSE_FAILED';
 export const USER_KEY_PRESS = 'USER_KEY_PRESS';
+
+export const SAVE_ARTICLES = 'SAVE_ARTICLES';
+export const SAVE_HEADLINES = 'SAVE_HEADLINES';
+export const SAVE_SOURCES = 'SAVE_SOURCES';

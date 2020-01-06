@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { Icon, Layout, Menu } from 'antd';
 import Logo from '../../Logo';
 import allowedPaths from '../../../utilities/allowedPaths';
 import getLocationPaths from '../../../utilities/getLocationPaths';
@@ -24,6 +24,12 @@ const MenuBar = props => {
 			</Menu.Item>
 			<Menu.Item key="/chat">
 				<Link to="/chat">Chat</Link>
+			</Menu.Item>
+			<Menu.Item key="/news">
+				<Link to="/news">News</Link>
+			</Menu.Item>
+			<Menu.Item style={{ float: 'right' }}>
+				<Icon type="question-circle" />
 			</Menu.Item>
 		</Menu>
 	);

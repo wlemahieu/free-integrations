@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import fs from 'fs';
 import { rose } from '../rose/index.js';
+import { newsSources } from '../newsapi/index.js';
 import textToSpeech from '../watson/text-to-speech/index.js';
 import { getAccessToken } from '../watson/accessToken/index.js';
 
@@ -40,5 +41,6 @@ const processInput = async (payload, res) => {
 };
 
 router.post('/', cors(corsOptions), (req, res) => processInput(req.query, res));
+router.get('/news', (req, res) => newsSources(res));
 
 export default router;

@@ -1,7 +1,6 @@
-// Credit goes to Bruce Wilcox & Sue Wilcox over at Brillig Understanding, Inc.
-// http://brilligunderstanding.com/aboutus.html
-// Their AI Bot named Rose had the most interested conversational responses out of most the bots I tested.
-// http://brilligunderstanding.com/rosedemo.html
+// Credit goes to Bruce Wilcox & Sue Wilcox over at Brillig Understanding, Inc. (http://brilligunderstanding.com/aboutus.html)
+// Their AI Bot script named Rose had the most interested conversational responses out of most the bots I tested. (http://brilligunderstanding.com/rosedemo.html)
+// This script talks to Rose through a browser and returns the results here for us to use.
 import puppeteer from 'puppeteer';
 
 const roseUrl = 'http://ec2-54-215-197-164.us-west-1.compute.amazonaws.com/speech.php';

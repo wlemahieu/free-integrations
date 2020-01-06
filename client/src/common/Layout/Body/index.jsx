@@ -6,6 +6,7 @@ import getLocationPaths from '../../../utilities/getLocationPaths';
 import Home from '../../Routes/Home';
 import Chat from '../../Routes/Chat';
 import License from '../../Routes/License';
+import News from '../../Routes/News';
 const { Content } = Layout;
 
 class Body extends PureComponent {
@@ -17,6 +18,9 @@ class Body extends PureComponent {
 			<Content className="content">
 				<Breadcrumb>{breadcrumbs}</Breadcrumb>
 				<Switch>
+					<Route path="/news">
+						<News />
+					</Route>
 					<Route path="/license">
 						<License />
 					</Route>
