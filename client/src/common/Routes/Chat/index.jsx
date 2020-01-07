@@ -32,9 +32,9 @@ class Chat extends PureComponent {
 	};
 
 	render() {
-		const inputs = this.props.chat.inputs.length;
-		const disabledSubmit = this.props.chat.inputs.length !== this.props.chat.responses.length;
-		const input = this.props.chat.input;
+		const inputs = this.props.inputs.length;
+		const disabledSubmit = this.props.inputs.length !== this.props.responses.length;
+		const input = this.props.input;
 		const chatInputProps = {
 			disabledSubmit,
 			input,
@@ -49,21 +49,12 @@ class Chat extends PureComponent {
 		return (
 			<div>
 				<ChatInput {...chatInputProps} />
-				<Conversation chat={this.props.chat} />
+				<Conversation chat={this.props} />
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		chat: {
-			...state.chat,
-			input: state.chat.input,
-			inputs: [...state.chat.inputs],
-			responses: [...state.chat.responses]
-		}
-	};
-};
+const mapStateToProps = state => state.chat;
 
 export default connect(mapStateToProps)(Chat);
