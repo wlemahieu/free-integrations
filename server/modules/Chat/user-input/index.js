@@ -1,31 +1,15 @@
 import fs from 'fs';
-import { rose } from '../rose-response/index.js';
-import textToSpeech from '../ibm-watson/text-to-speech/index.js';
+import rose from '../rose/index.js';
+import { handleInput } from '../ibm-watson/synthesize-text/index.js';
 
 export const processInput = async (payload, res) => {
-	const uuid = payload.name;
-	const audioFileName = `./conversations/${uuid}-audio.wav`;
 	const roseResponse = await rose(payload);
-	const params = {
-	  text: roseResponse,
-	  accept: 'audio/wav',
-	  voice: 'en-US_AllisonVoice',
-	};
-	// const accessToken = await getAccessToken();
-	// console.log('accessToken ', accessToken);
-	textToSpeech.synthesize(params)
-		.then(response => {
-			const audio = response.result;
-			return textToSpeech.repairWavHeaderStream(audio);
-		})
-		.then(repairedFile => {
-			if (fs.existsSync(audioFileName)) {
-				fs.unlinkSync(audioFileName);
-			}
-			fs.writeFileSync(audioFileName, repairedFile);
+	if (roseResponse) {
+		payload.roseResponse = roseResponse
+		const synthesizedText = await handleInput(payload);
+		if (synthesizedText) {
 			res.send(roseResponse);
-		})
-		.catch(err => {
-			console.log(err);
-		});
+		}
+	}
+	res.status(404).end();
 };

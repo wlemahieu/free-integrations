@@ -4,11 +4,11 @@
 import puppeteer from 'puppeteer';
 
 const roseUrl = 'http://ec2-54-215-197-164.us-west-1.compute.amazonaws.com/speech.php';
-const extractRoseText = (text) => {
+const extrapolateRoseText = (text) => {
 	return text.split(/\n/)[1].replace('Rose: ', '').trim(); // User is line 1, Rose is line 2, empty line 3.
 };
 
-export const rose = async (payload) => {
+export default async (payload) => {
 	try {
 		const input = payload.input;
 		const name = payload.name;
@@ -27,10 +27,11 @@ export const rose = async (payload) => {
 		await page.keyboard.press('Enter', {delay: 1000});
 		// extract text response
 		const text = await page.evaluate(() => document.querySelector('#responseHolder').innerText);
-		const extractedText = extractRoseText(text);
+		const extractedText = extrapolateRoseText(text);
 		await browser.close();
 		return extractedText;
 	} catch (e) {
 		console.log(e);
+		return 'Woops, there was a problem!';
 	}
 };
