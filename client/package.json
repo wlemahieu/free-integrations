@@ -30,7 +30,7 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "dev": "cd ../server && yarn run dev"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,6 +63,9 @@
       "js",
       "jsx"
     ],
+		"moduleNameMapper": {
+      "src(.*)$": "<rootDir>/src/$1"
+		},
     "setupFilesAfterEnv": [
       "<rootDir>/src/jest.setup.js"
     ],
@@ -76,7 +79,9 @@
       "<rootDir>/node_modules/"
     ]
   },
-	"babel": {
-    "presets": ["react-app"]
-	}
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
 }
