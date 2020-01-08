@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Col, Row, Timeline } from 'antd';
 import { each, map } from 'lodash';
@@ -41,5 +42,17 @@ class Conversation extends PureComponent {
 		);
 	}
 }
+
+Conversation.propTypes = {
+	input: PropTypes.string,
+	inputs: PropTypes.array,
+	responses: PropTypes.array
+};
+
+Conversation.defaultProps = {
+	input: '',
+	inputs: [],
+	responses: []
+};
 
 export default Conversation;
