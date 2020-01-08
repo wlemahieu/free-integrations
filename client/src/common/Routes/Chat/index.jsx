@@ -32,16 +32,17 @@ class Chat extends PureComponent {
 	};
 
 	render() {
-		const inputs = this.props.inputs.length;
-		const disabledSubmit = this.props.inputs.length !== this.props.responses.length;
 		const input = this.props.input;
+		const inputs = this.props.inputs;
+		const responses = this.props.responses;
+		const disabledSubmit = inputs.length !== responses.length;
 		const chatInputProps = {
 			disabledSubmit,
 			input,
 			onSearch: this.onSearch,
 			updateInput: this.updateInput
 		};
-		if (inputs && !disabledSubmit && !this.state.audioPlayed) {
+		if (inputs.length && !disabledSubmit && !this.state.audioPlayed) {
 			const audio = new Audio(`http://localhost:3000/${this.state.name}-audio.wav?decache=${Math.random()}`);
 			audio.play();
 			this.setState({ audioPlayed: true })
@@ -49,7 +50,7 @@ class Chat extends PureComponent {
 		return (
 			<div>
 				<ChatInput {...chatInputProps} />
-				<Conversation chat={this.props} />
+				<Conversation inputs={inputs} responses={responses} />
 			</div>
 		);
 	}

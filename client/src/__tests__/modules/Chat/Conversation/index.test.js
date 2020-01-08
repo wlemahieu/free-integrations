@@ -1,19 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Conversation from '../../../../modules/Chat/Conversation';
+import toJson from 'enzyme-to-json';
+import renderer from 'react-test-renderer';
+import Conversation from 'src/modules/Chat/Conversation';
+const props = {
+	inputs: ['I feel good.', 'Hello'],
+	responses: ['I am glad you feel good.', 'Hey there, how are you?']
+};
 
-function mock() {
-	const props = {
-		input: '',
-		inputs: [],
-		responses: []
-	};
-  return <Conversation chat={props} />;
-}
+let wrapper;
+beforeEach(() => {
+	wrapper = shallow(<Conversation {...props} />);
+});
 
 describe('<Conversation />', () => {
-  it('shallow renders correctly', () => {
-    const wrapper = shallow(mock());
-    expect(wrapper).toMatchSnapshot();
-  });
+	it('renders properly', () => {
+		expect(toJson(wrapper)).toMatchSnapshot();
+	});
 });

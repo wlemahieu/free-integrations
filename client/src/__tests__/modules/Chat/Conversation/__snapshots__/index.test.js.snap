@@ -1,3 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Conversation /> shallow renders correctly 1`] = `ShallowWrapper {}`;
+exports[`<Conversation /> renders properly 1`] = `
+<Row
+  className="centered"
+  gutter={0}
+  style={
+    Object {
+      "paddingTop": "60px",
+    }
+  }
+>
+  <Col
+    offset={6}
+    span={12}
+  >
+    <Scrollbars
+      autoHeight={false}
+      autoHeightMax={200}
+      autoHeightMin={0}
+      autoHide={false}
+      autoHideDuration={200}
+      autoHideTimeout={1000}
+      hideTracksWhenNotNeeded={false}
+      renderThumbHorizontal={[Function]}
+      renderThumbVertical={[Function]}
+      renderTrackHorizontal={[Function]}
+      renderTrackVertical={[Function]}
+      renderView={[Function]}
+      style={
+        Object {
+          "height": 600,
+        }
+      }
+      tagName="div"
+      thumbMinSize={30}
+      universal={false}
+    >
+      <Timeline
+        mode="alternate"
+        reverse={false}
+        style={
+          Object {
+            "paddingRight": "20px",
+          }
+        }
+      >
+        <TimelineItem
+          color="green"
+          key="ai-0"
+          pending={false}
+          position=""
+        >
+          Hey there, how are you?
+        </TimelineItem>
+        <TimelineItem
+          color="blue"
+          key="me-1"
+          pending={false}
+          position=""
+        >
+          Hello
+        </TimelineItem>
+        <TimelineItem
+          color="green"
+          key="ai-2"
+          pending={false}
+          position=""
+        >
+          I am glad you feel good.
+        </TimelineItem>
+        <TimelineItem
+          color="blue"
+          key="me-3"
+          pending={false}
+          position=""
+        >
+          I feel good.
+        </TimelineItem>
+      </Timeline>
+    </Scrollbars>
+  </Col>
+</Row>
+`;
