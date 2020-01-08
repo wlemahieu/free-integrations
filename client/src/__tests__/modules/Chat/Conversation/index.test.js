@@ -1,5 +1,5 @@
 import React from 'react';
-import { each, every, isArray, isString } from 'lodash';
+import { every, isArray, isString } from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Conversation from 'src/modules/Chat/Conversation';
@@ -19,37 +19,37 @@ describe('<Conversation />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
   it('renders single row className="centered" gutter=0', () => {
-		const Rows = wrapper.find('Row');
-		const { className, gutter } = Rows.props();
-		expect(Rows).toHaveLength(1);
+    const Rows = wrapper.find('Row');
+    const { className, gutter } = Rows.props();
+    expect(Rows).toHaveLength(1);
     expect(className).toEqual('centered');
-		expect(gutter).toEqual(0);
+    expect(gutter).toEqual(0);
   });
   it('renders single column span=12 offset=6', () => {
-		const Cols = wrapper.find('Col');
-		const { span, offset } = Cols.props();
-		expect(Cols).toHaveLength(1);
+    const Cols = wrapper.find('Col');
+    const { span, offset } = Cols.props();
+    expect(Cols).toHaveLength(1);
     expect(span).toEqual(12);
-		expect(offset).toEqual(6);
+    expect(offset).toEqual(6);
   });
   it('renders single scrollbars', () => {
     expect(wrapper.find('Scrollbars')).toHaveLength(1);
   });
   it('renders single timeline mode="alternate"', () => {
-		const Timeline = wrapper.find('Timeline');
-		const { mode } = Timeline.props();
-		expect(Timeline).toHaveLength(1);
+    const Timeline = wrapper.find('Timeline');
+    const { mode } = Timeline.props();
+    expect(Timeline).toHaveLength(1);
     expect(mode).toEqual('alternate');
   });
   it('renders six alternating color timeline items', () => {
-		let priorColor = 'blue';
-		const TimelineItems = wrapper.find('TimelineItem');
-		TimelineItems.forEach((node, key) => {
-			const color = node.props().color;
-			expect(color).not.toEqual(priorColor);
-			priorColor = color;
-		});
-		expect(TimelineItems).toHaveLength(6);
+    let priorColor = 'blue';
+    const TimelineItems = wrapper.find('TimelineItem');
+    TimelineItems.forEach((node) => {
+      const color = node.props().color;
+      expect(color).not.toEqual(priorColor);
+      priorColor = color;
+    });
+    expect(TimelineItems).toHaveLength(6);
   });
 });
 

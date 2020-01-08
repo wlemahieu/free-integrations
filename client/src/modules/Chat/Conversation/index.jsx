@@ -13,7 +13,7 @@ class Conversation extends PureComponent {
 				<Col span={12} offset={6}>
 					<Scrollbars style={{ height: 600 }}>
 						<Timeline mode="alternate" style={{ paddingRight: '20px' }}>
-							{timeline}
+						{timeline}
 						</Timeline>
 					</Scrollbars>
 				</Col>
