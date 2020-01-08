@@ -77,6 +77,22 @@ exports[`<Conversation /> matches snapshot 1`] = `
         >
           I feel good.
         </TimelineItem>
+        <TimelineItem
+          color="green"
+          key="ai-4"
+          pending={false}
+          position=""
+        >
+          Why thank you!
+        </TimelineItem>
+        <TimelineItem
+          color="blue"
+          key="me-5"
+          pending={false}
+          position=""
+        >
+          You are very nice
+        </TimelineItem>
       </Timeline>
     </Scrollbars>
   </Col>
