@@ -1,0 +1,66 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": [
+    "react",
+    "jest"
+  ],
+  "globals": {
+    "__DEV__": true,
+    "fetch": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-mixed-operators": 0,
+    "react/no-unused-state": 0,
+    "arrow-parens": 0,
+    "import/no-extraneous-dependencies": 0,
+    "arrow-body-style": [0, "as-needed"],
+    "comma-dangle": ["error", "only-multiline"],
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "max-len": 0,
+    "react/no-danger": 0,
+    "no-console": 0,
+    "no-throw-literal": 0,
+    "no-useless-escape": 0,
+    "object-curly-newline": 0,
+    "prefer-destructuring": 0,
+    "no-debugger": 0,
+    "global-require": "off",
+    "no-shadow": 0,
+    "no-case-declarations": 0,
+    "no-nested-ternary": 1,
+    "no-underscore-dangle": 0,
+    "camelcase": 1,
+    "no-param-reassign": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-pascal-case": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-unused-prop-types": 0,
+    "react/prop-types": 1,
+    "react/no-array-index-key": 0,
+    "react/prefer-stateless-function": 0,
+    "react/destructuring-assignment": 0,
+    "no-plusplus": 0,
+    "no-else-return": ["error", {"allowElseIf": true}],
+    "react/no-multi-comp": 0,
+    "no-return-assign": 0,
+    "import/no-unresolved": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["src", "./src"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
+  }
+}

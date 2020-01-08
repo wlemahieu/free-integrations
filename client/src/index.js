@@ -8,19 +8,20 @@ import Head from './common/Layout/Head';
 import Foot from './common/Layout/Foot';
 import './index.css';
 import store from './redux/store';
+
 const rootNode = document.getElementById('root');
 
 const App = () => {
   return (
-		<Provider store={store}>
-			<Router>
-				<Layout>
-					<Head />
-					<Body />
-					<Foot />
-		    </Layout>
-			</Router>
-		</Provider>
+    <Provider store={store}>
+      <Router>
+        <Layout>
+          <Head />
+          <Body />
+          <Foot />
+        </Layout>
+      </Router>
+    </Provider>
   );
 };
 
