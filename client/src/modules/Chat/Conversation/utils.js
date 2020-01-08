@@ -2,7 +2,7 @@ import React from 'react';
 import { each, map } from 'lodash';
 import { Timeline } from 'antd';
 
-const createTimelineData = (inputs, responses) => {
+export const createTimelineData = (inputs, responses) => {
 	const timeline = [];
 	each(inputs, (value, key) => {
 		timeline.unshift(value);

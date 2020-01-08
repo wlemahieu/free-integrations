@@ -6,8 +6,7 @@ import { createTimelineItems } from './utils.js';
 
 class Conversation extends PureComponent {
 	render() {
-		const inputs = this.props.inputs;
-		const responses = this.props.responses;
+		const { inputs, responses } = this.props;
 		return (
 			<Row className="centered" style={{ paddingTop: '60px' }}>
 				<Col span={12} offset={6}>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Conversation /> renders properly 1`] = `
+exports[`<Conversation /> matches snapshot 1`] = `
 <Row
   className="centered"
   gutter={0}

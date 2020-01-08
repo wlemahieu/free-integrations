@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import ChatInput from '../../../modules/Chat/Input';
-import Conversation from '../../../modules/Chat/Conversation';
+import ChatInput from 'modules/Chat/Input';
+import Conversation from 'modules/Chat/Conversation';
 
 class Chat extends PureComponent {
 	constructor() {
@@ -32,9 +32,7 @@ class Chat extends PureComponent {
 	};
 
 	render() {
-		const input = this.props.input;
-		const inputs = this.props.inputs;
-		const responses = this.props.responses;
+		const { input, inputs, responses } = this.props;
 		const disabledSubmit = inputs.length !== responses.length;
 		const chatInputProps = {
 			disabledSubmit,
