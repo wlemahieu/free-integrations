@@ -1,5 +1,6 @@
-##### Before continuing:
-Copy .env-model to .env & and replace with real API keys.
-
-##### Start the app from ./server or ./client
-#### `yarn run dev`
+##### Getting Started
+* Run `yarn install`
+* Copy `.env-model` to `.env` & and update with real API keys.
+* Ensure `./client/README` instructions were followed.
+##### Start the app
+* Run `yarn run dev`
