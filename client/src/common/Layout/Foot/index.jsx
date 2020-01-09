@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
 
 const { Footer } = Layout;
+
 const Foot = () => {
   return (
     <Footer className="centered">

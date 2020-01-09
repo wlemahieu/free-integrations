@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { Breadcrumb, Layout } from 'antd';
-import getBreadcrumbs from '../../../utilities/getBreadcrumbs';
-import getLocationPaths from '../../../utilities/getLocationPaths';
-import Home from '../../Routes/Home';
-import Chat from '../../Routes/Chat';
-import License from '../../Routes/License';
-import News from '../../Routes/News';
+import getBreadcrumbs from 'utilities/getBreadcrumbs';
+import getLocationPaths from 'utilities/getLocationPaths';
+import Home from 'common/Routes/Home';
+import Chat from 'common/Routes/Chat';
+import License from 'common/Routes/License';
+import News from 'common/Routes/News';
 
 const { Content } = Layout;
 

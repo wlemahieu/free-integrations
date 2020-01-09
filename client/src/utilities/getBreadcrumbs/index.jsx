@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
 import { startCase } from 'lodash';
-import allowedPaths from '../allowedPaths';
+import allowedPaths from 'utilities/allowedPaths';
 
 const Crumb = params => {
   return (

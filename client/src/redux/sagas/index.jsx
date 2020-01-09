@@ -1,6 +1,6 @@
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import * as ChatApi from '../../services/Chat';
-import * as types from '../actionTypes';
+import * as ChatApi from 'services/Chat';
+import * as types from 'redux/actionTypes';
 
 export function* sendInput(action) {
   try {

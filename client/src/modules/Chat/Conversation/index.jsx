@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Col, Row, Timeline } from 'antd';
-import { createTimelineItems } from './utils.js';
+import { createTimelineItems } from './utils';
 
 class Conversation extends PureComponent {
   render() {

@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Icon, Layout, Menu } from 'antd';
-import Logo from '../../Logo';
-import allowedPaths from '../../../utilities/allowedPaths';
-import getLocationPaths from '../../../utilities/getLocationPaths';
+import Logo from 'common/Logo';
+import allowedPaths from 'utilities/allowedPaths';
+import getLocationPaths from 'utilities/getLocationPaths';
 
 const { Header } = Layout;
 

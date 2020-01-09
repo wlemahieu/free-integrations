@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'antd';
-import Sources from '../../../modules/News/Sources';
+import Sources from 'modules/News/Sources';
 
 class News extends PureComponent {
   constructor() {
@@ -23,15 +23,6 @@ class News extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    news: {
-      ...state.news,
-      articles: state.news.articles,
-      headlines: [...state.news.headlines],
-      sources: [...state.news.sources]
-    }
-  };
-};
+const mapStateToProps = state => state.chat;
 
 export default connect(mapStateToProps)(News);

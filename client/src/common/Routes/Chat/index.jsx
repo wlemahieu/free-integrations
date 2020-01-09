@@ -26,11 +26,7 @@ class Chat extends PureComponent {
     }
   };
 
-  updateInput = input => {
-    if (input) {
-      this.props.dispatch({ type: 'USER_KEY_PRESS', payload: input });
-    }
-  };
+  updateInput = input => (input ? this.props.dispatch({ type: 'USER_KEY_PRESS', payload: input }) : null);
 
   render() {
     const { input, inputs, responses } = this.props;
@@ -48,10 +44,7 @@ class Chat extends PureComponent {
           onSearch={this.onSearch}
           updateInput={this.updateInput}
         />
-        <Conversation
-          inputs={inputs}
-          responses={responses}
-        />
+        <Conversation inputs={inputs} responses={responses} />
       </div>
     );
   }
