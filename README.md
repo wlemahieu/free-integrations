@@ -14,6 +14,6 @@ Harnesses the power of IBM Watson API and taps into a 3rd-party AI Bot named Ros
 ### News API Consumer
 Consumes a news API (https://newsapi.org/) for interesting display and analysis of news headlines & articles.
 
-#### Fully Unit-Tested
+## Fully Unit-Tested
 * Unit tests are located in `./client/src/__tests__` and run from `./client` using `yarn run test`.
 * Server-side unit tests and End-to-End Testing coming soon.
