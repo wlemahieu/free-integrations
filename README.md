@@ -2,7 +2,7 @@
 
 ## Stack Information
 #### Main frontend dependencies:
-React.js, Redux, Ant-Design, Axios
+React.js, Redux, Ant-Design, Axios, Jest, Enzyme, ESLint
 #### Main backend dependencies:
 Express.js, Puppeteer, Redis, IBM Cloud API, NewsAPI
 
