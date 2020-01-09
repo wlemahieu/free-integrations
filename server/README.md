@@ -1,6 +1,5 @@
 ##### Before continuing:
 Copy .env-model to .env & and replace with real API keys.
 
-##### From this directory, run:
-
+##### Start the app from ./server or ./client
 #### `yarn run dev`
