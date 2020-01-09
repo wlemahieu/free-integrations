@@ -54,7 +54,8 @@
     "no-else-return": ["error", {"allowElseIf": true}],
     "react/no-multi-comp": 0,
     "no-return-assign": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "import/extensions": 0
   },
   "settings": {
     "import/resolver": {
