@@ -3,9 +3,9 @@
 exports[`<ChatInput /> matches snapshot 1`] = `
 <ChatInput
   disabledSubmit={false}
-  dispatch={[Function]}
   input=""
   onSearch={[Function]}
+  updateInput={[Function]}
 >
   <Row
     className="centered"

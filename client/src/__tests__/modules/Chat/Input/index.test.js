@@ -7,7 +7,7 @@ import ChatInput from 'src/modules/Chat/Input';
 const props = {
   disabledSubmit: false,
   input: ''
-}
+};
 
 let wrapper;
 beforeEach(() => {
@@ -43,6 +43,5 @@ describe('<ChatInput />', () => {
     expect(Search).toHaveLength(1);
     expect(placeholder).toBe('Say something to Rose Watson');
     expect(size).toBe('large');
-
   });
 });
