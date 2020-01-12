@@ -73,6 +73,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "jest": "^24.9.0",
+    "jest-prop-type-error": "^1.1.0",
     "react-test-renderer": "^16.12.0"
   },
   "jest": {
@@ -84,6 +85,7 @@
       "src(.*)$": "<rootDir>/src/$1"
     },
     "setupFilesAfterEnv": [
+      "jest-prop-type-error",
       "<rootDir>/src/jest.setup.js"
     ],
     "testMatch": [

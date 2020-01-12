@@ -51,11 +51,11 @@ class Head extends PureComponent {
 }
 
 Head.propTypes = {
-  location: PropTypes.string
+  location: PropTypes.object
 };
 
 Head.defaultProps = {
-  location: ''
+  location: {}
 };
 
 export default withRouter(Head);

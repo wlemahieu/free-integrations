@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatInput /> matches snapshot 1`] = `
+<ChatInput
+  disabledSubmit={false}
+  dispatch={[Function]}
+  input=""
+  onSearch={[Function]}
+>
+  <Row
+    className="centered"
+    gutter={0}
+    style={
+      Object {
+        "paddingTop": "40px",
+      }
+    }
+  >
+    <div
+      className="ant-row centered"
+      style={
+        Object {
+          "paddingTop": "40px",
+        }
+      }
+    >
+      <Col
+        offset={6}
+        span={12}
+      >
+        <div
+          className="ant-col ant-col-12 ant-col-offset-6"
+          style={Object {}}
+        >
+          <Search
+            autoFocus={true}
+            disabled={false}
+            enterButton={true}
+            onChange={[Function]}
+            onSearch={[Function]}
+            placeholder="Say something to Rose Watson"
+            size="large"
+            value=""
+          >
+            <Input
+              addonAfter={
+                <Button
+                  block={false}
+                  className="ant-input-search-button"
+                  disabled={false}
+                  ghost={false}
+                  htmlType="button"
+                  loading={false}
+                  onClick={[Function]}
+                  size="large"
+                  type="primary"
+                >
+                  <Icon
+                    type="search"
+                  />
+                </Button>
+              }
+              autoFocus={true}
+              className="ant-input-search ant-input-search-enter-button ant-input-search-large"
+              disabled={false}
+              onChange={[Function]}
+              onPressEnter={[Function]}
+              placeholder="Say something to Rose Watson"
+              prefixCls="ant-input"
+              size="large"
+              type="text"
+              value=""
+            >
+              <ClearableLabeledInput
+                addonAfter={
+                  <Button
+                    block={false}
+                    className="ant-input-search-button"
+                    disabled={false}
+                    ghost={false}
+                    htmlType="button"
+                    loading={false}
+                    onClick={[Function]}
+                    size="large"
+                    type="primary"
+                  >
+                    <Icon
+                      type="search"
+                    />
+                  </Button>
+                }
+                autoFocus={true}
+                className="ant-input-search ant-input-search-enter-button ant-input-search-large"
+                disabled={false}
+                element={
+                  <input
+                    autoFocus={true}
+                    className="ant-input ant-input-lg"
+                    disabled={false}
+                    onChange={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder="Say something to Rose Watson"
+                    type="text"
+                    value=""
+                  />
+                }
+                handleReset={[Function]}
+                inputType="input"
+                onChange={[Function]}
+                onPressEnter={[Function]}
+                placeholder="Say something to Rose Watson"
+                prefixCls="ant-input"
+                size="large"
+                type="text"
+                value=""
+              >
+                <span
+                  className="ant-input-search ant-input-search-enter-button ant-input-search-large ant-input-group-wrapper ant-input-group-wrapper-lg"
+                >
+                  <span
+                    className="ant-input-wrapper ant-input-group"
+                  >
+                    <input
+                      autoFocus={true}
+                      className="ant-input ant-input-lg"
+                      disabled={false}
+                      onChange={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Say something to Rose Watson"
+                      style={null}
+                      type="text"
+                      value=""
+                    />
+                    <span
+                      className="ant-input-group-addon"
+                    >
+                      <Button
+                        block={false}
+                        className="ant-input-search-button"
+                        disabled={false}
+                        ghost={false}
+                        htmlType="button"
+                        key="enterButton"
+                        loading={false}
+                        onClick={[Function]}
+                        size="large"
+                        type="primary"
+                      >
+                        <Wave>
+                          <button
+                            className="ant-btn ant-input-search-button ant-btn-primary ant-btn-lg"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            <Icon
+                              key=".0"
+                              type="search"
+                            >
+                              <LocaleReceiver
+                                componentName="Icon"
+                              >
+                                <i
+                                  aria-label="icon: search"
+                                  className="anticon anticon-search"
+                                >
+                                  <IconReact
+                                    className=""
+                                    type="search-o"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      className=""
+                                      data-icon="search"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      key="svg-search"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+                                        key="svg-search-svg-0"
+                                      />
+                                    </svg>
+                                  </IconReact>
+                                </i>
+                              </LocaleReceiver>
+                            </Icon>
+                          </button>
+                        </Wave>
+                      </Button>
+                    </span>
+                  </span>
+                </span>
+              </ClearableLabeledInput>
+            </Input>
+          </Search>
+        </div>
+      </Col>
+    </div>
+  </Row>
+</ChatInput>
+`;

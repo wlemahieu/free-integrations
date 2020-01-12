@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Link, Switch, Route, withRouter } from 'react-router-dom';
 import { Breadcrumb, Layout } from 'antd';
 import getBreadcrumbs from 'utilities/getBreadcrumbs';
 import getLocationPaths from 'utilities/getLocationPaths';
@@ -14,11 +14,19 @@ const { Content } = Layout;
 class Body extends PureComponent {
   render() {
     const { location } = this.props;
-    const paths = getLocationPaths(location);
-    const breadcrumbs = getBreadcrumbs(paths);
+    const path = getLocationPaths(location);
+    const breadcrumbs = getBreadcrumbs(path);
     return (
       <Content className="content">
-        <Breadcrumb>{breadcrumbs}</Breadcrumb>
+        <Breadcrumb>
+          {
+            breadcrumbs.map(crumb => (
+              <Breadcrumb.Item key={crumb.path}>
+                <Link to={crumb.to}>{crumb.title}</Link>
+              </Breadcrumb.Item>
+            ))
+          }
+        </Breadcrumb>
         <Switch>
           <Route path="/news">
             <News />
@@ -39,11 +47,11 @@ class Body extends PureComponent {
 }
 
 Body.propTypes = {
-  location: PropTypes.string
+  location: PropTypes.object
 };
 
 Body.defaultProps = {
-  location: ''
+  location: {}
 };
 
 export default withRouter(Body);
