@@ -19,16 +19,16 @@ describe('<Conversation />', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
   it('renders single row className="centered" gutter=0', () => {
-    const Rows = wrapper.find('Row');
-    const { className, gutter } = Rows.props();
-    expect(Rows).toHaveLength(1);
-    expect(className).toEqual('centered');
+    const rows = wrapper.find('Row');
+    const { className, gutter } = rows.props();
+    expect(rows).toHaveLength(1);
+    expect(className).toBe('centered');
     expect(gutter).toEqual(0);
   });
   it('renders single column span=12 offset=6', () => {
-    const Cols = wrapper.find('Col');
-    const { span, offset } = Cols.props();
-    expect(Cols).toHaveLength(1);
+    const cols = wrapper.find('Col');
+    const { span, offset } = cols.props();
+    expect(cols).toHaveLength(1);
     expect(span).toEqual(12);
     expect(offset).toEqual(6);
   });
@@ -36,20 +36,20 @@ describe('<Conversation />', () => {
     expect(wrapper.find('Scrollbars')).toHaveLength(1);
   });
   it('renders single timeline mode="alternate"', () => {
-    const Timeline = wrapper.find('Timeline');
-    const { mode } = Timeline.props();
-    expect(Timeline).toHaveLength(1);
-    expect(mode).toEqual('alternate');
+    const timeline = wrapper.find('Timeline');
+    const { mode } = timeline.props();
+    expect(timeline).toHaveLength(1);
+    expect(mode).toBe('alternate');
   });
   it('renders six alternating color timeline items', () => {
     let priorColor = 'blue';
-    const TimelineItems = wrapper.find('TimelineItem');
-    TimelineItems.forEach((node) => {
+    const timelineItems = wrapper.find('TimelineItem');
+    timelineItems.forEach((node) => {
       const color = node.props().color;
       expect(color).not.toEqual(priorColor);
       priorColor = color;
     });
-    expect(TimelineItems).toHaveLength(6);
+    expect(timelineItems).toHaveLength(6);
   });
 });
 
