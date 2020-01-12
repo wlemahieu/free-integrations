@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link, Switch, Route, withRouter } from 'react-router-dom';
 import { Breadcrumb, Layout } from 'antd';
 import getBreadcrumbs from 'utilities/getBreadcrumbs';
-import getLocationPaths from 'utilities/getLocationPaths';
 import Home from 'common/Routes/Home';
 import Chat from 'common/Routes/Chat';
 import License from 'common/Routes/License';
@@ -14,8 +13,7 @@ const { Content } = Layout;
 class Body extends PureComponent {
   render() {
     const { location } = this.props;
-    const path = getLocationPaths(location);
-    const breadcrumbs = getBreadcrumbs(path);
+    const breadcrumbs = getBreadcrumbs(location);
     return (
       <Content className="content">
         <Breadcrumb>

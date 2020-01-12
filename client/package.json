@@ -81,9 +81,9 @@
       "js",
       "jsx"
     ],
-    "moduleNameMapper": {
-      "src(.*)$": "<rootDir>/src/$1"
-    },
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
     "setupFilesAfterEnv": [
       "jest-prop-type-error",
       "<rootDir>/src/jest.setup.js"

@@ -1,8 +1,7 @@
 import React from 'react';
-// import { every, isArray, isString } from 'lodash';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ChatInput from 'src/modules/Chat/Input';
+import ChatInput from 'modules/Chat/Input';
 
 const props = {
   disabledSubmit: false,

@@ -2,8 +2,8 @@ import React from 'react';
 import { every, isArray, isString } from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Conversation from 'src/modules/Chat/Conversation';
-import { createTimelineData, createTimelineItems } from 'src/modules/Chat/Conversation/helper';
+import Conversation from 'modules/Chat/Conversation';
+import { createTimelineData, createTimelineItems } from 'modules/Chat/Conversation/helper';
 
 const inputs = ['You are very nice', 'I feel good.', 'Hello'];
 const responses = ['Why thank you!', 'I am glad you feel good.', 'Hey there, how are you?'];
