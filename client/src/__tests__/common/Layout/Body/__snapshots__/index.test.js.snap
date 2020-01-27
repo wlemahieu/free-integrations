@@ -1,201 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Body /> matches snapshot 1`] = `
-<MemoryRouter
-  initialEntries={
-    Array [
-      Object {
-        "key": "testKey",
-        "pathname": "/",
-      },
-    ]
-  }
->
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "canGo": [Function],
-        "createHref": [Function],
-        "entries": Array [
-          Object {
-            "hash": "",
-            "key": "testKey",
-            "pathname": "/",
-            "search": "",
-          },
-        ],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "index": 0,
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "key": "testKey",
-          "pathname": "/",
-          "search": "",
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
+exports[`Layout Body should render 1`] = `
+<div>
+  <main
+    class="content ant-layout-content"
   >
-    <withRouter(Body)
-      location={Object {}}
+    <div
+      class="ant-breadcrumb"
     >
-      <Body
-        history={
-          Object {
-            "action": "POP",
-            "block": [Function],
-            "canGo": [Function],
-            "createHref": [Function],
-            "entries": Array [
-              Object {
-                "hash": "",
-                "key": "testKey",
-                "pathname": "/",
-                "search": "",
-              },
-            ],
-            "go": [Function],
-            "goBack": [Function],
-            "goForward": [Function],
-            "index": 0,
-            "length": 1,
-            "listen": [Function],
-            "location": Object {
-              "hash": "",
-              "key": "testKey",
-              "pathname": "/",
-              "search": "",
-            },
-            "push": [Function],
-            "replace": [Function],
-          }
-        }
-        location={
-          Object {
-            "hash": "",
-            "key": "testKey",
-            "pathname": "/",
-            "search": "",
-          }
-        }
-        match={
-          Object {
-            "isExact": true,
-            "params": Object {},
-            "path": "/",
-            "url": "/",
-          }
-        }
-      >
-        <Adapter
-          className="content"
+      <span>
+        <span
+          class="ant-breadcrumb-link"
         >
-          <Basic
-            className="content"
-            prefixCls="ant-layout-content"
-            tagName="main"
+          <a
+            href="/home"
+            title="Home"
           >
-            <main
-              className="content ant-layout-content"
-            >
-              <Breadcrumb
-                separator="/"
-              >
-                <div
-                  className="ant-breadcrumb"
-                >
-                  <BreadcrumbItem
-                    key="0/.$home"
-                    separator="/"
-                  >
-                    <span>
-                      <span
-                        className="ant-breadcrumb-link"
-                      >
-                        <Link
-                          to="/home"
-                        >
-                          <LinkAnchor
-                            href="/home"
-                            navigate={[Function]}
-                          >
-                            <a
-                              href="/home"
-                              onClick={[Function]}
-                            >
-                              Home
-                            </a>
-                          </LinkAnchor>
-                        </Link>
-                      </span>
-                      <span
-                        className="ant-breadcrumb-separator"
-                      >
-                        /
-                      </span>
-                    </span>
-                  </BreadcrumbItem>
-                </div>
-              </Breadcrumb>
-              <Switch>
-                <Route
-                  computedMatch={
-                    Object {
-                      "isExact": true,
-                      "params": Object {},
-                      "path": "/",
-                      "url": "/",
-                    }
-                  }
-                  location={
-                    Object {
-                      "hash": "",
-                      "key": "testKey",
-                      "pathname": "/",
-                      "search": "",
-                    }
-                  }
-                  path="/"
-                >
-                  <Home>
-                    <Row
-                      className="centered"
-                      gutter={0}
-                    >
-                      <div
-                        className="ant-row centered"
-                        style={Object {}}
-                      >
-                        <Col
-                          offset={6}
-                          span={12}
-                        >
-                          <div
-                            className="ant-col ant-col-12 ant-col-offset-6"
-                            style={Object {}}
-                          >
-                            <h1>
-                              Greetings!
-                            </h1>
-                          </div>
-                        </Col>
-                      </div>
-                    </Row>
-                  </Home>
-                </Route>
-              </Switch>
-            </main>
-          </Basic>
-        </Adapter>
-      </Body>
-    </withRouter(Body)>
-  </Router>
-</MemoryRouter>
+            Home
+          </a>
+        </span>
+        <span
+          class="ant-breadcrumb-separator"
+        >
+          /
+        </span>
+      </span>
+    </div>
+    <div
+      class="ant-row centered"
+    >
+      <div
+        class="ant-col ant-col-12 ant-col-offset-6"
+      >
+        <h1>
+          Greetings!
+        </h1>
+      </div>
+    </div>
+  </main>
+  ;
+</div>
 `;

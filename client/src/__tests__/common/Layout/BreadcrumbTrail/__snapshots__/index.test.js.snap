@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Body should match snapshot 1`] = `
+<div>
+  <div
+    class="ant-breadcrumb"
+  >
+    <span>
+      <span
+        class="ant-breadcrumb-link"
+      >
+        <a
+          href="/home"
+          title="Home"
+        >
+          Home
+        </a>
+      </span>
+      <span
+        class="ant-breadcrumb-separator"
+      >
+        /
+      </span>
+    </span>
+    <span>
+      <span
+        class="ant-breadcrumb-link"
+      >
+        <a
+          href="/chat"
+          title="Chat"
+        >
+          Chat
+        </a>
+      </span>
+      <span
+        class="ant-breadcrumb-separator"
+      >
+        /
+      </span>
+    </span>
+  </div>
+  ;
+</div>
+`;

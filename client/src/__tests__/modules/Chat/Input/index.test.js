@@ -38,7 +38,7 @@ describe('<ChatInput />', () => {
   });
   it('renders single large non-disabled search input with specific placeholder verbiage', () => {
     const search = wrapper.find('Search');
-    const { disabled, placeholder, size } = search.props();
+    const { disabled, placeholder } = search.props();
     expect(search).toHaveLength(1);
     expect(placeholder).toBe('Say something to Rose Watson');
     expect(disabled).toEqual(false);

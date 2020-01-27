@@ -49,6 +49,9 @@
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "@testing-library/dom": "^6.11.0",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/react-hooks": "^3.2.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
@@ -72,6 +75,8 @@
     "eslint-plugin-jest": "^23.2.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-prop-type-error": "^1.1.0",
     "react-test-renderer": "^16.12.0"
@@ -81,6 +86,11 @@
       "js",
       "jsx"
     ],
+    "moduleDirectories": ["node_modules", "bower_components", "src"],
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js"
+    },
     "modulePaths": [
       "<rootDir>/src/"
     ],

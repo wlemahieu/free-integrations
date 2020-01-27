@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Foot should match snapshot 1`] = `
+<div>
+  <footer
+    class="centered ant-layout-footer"
+  >
+    <span>
+      Free Integrations
+    </span>
+    <a
+      href="/license"
+      title="License"
+    >
+       (MIT License) 
+    </a>
+    <span>
+      Created by Wesley LeMahieu
+    </span>
+  </footer>
+  ;
+</div>
+`;
