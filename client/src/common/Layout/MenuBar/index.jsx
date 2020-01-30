@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'antd';
-import getSelectedKeys from 'utilities/getLocationPaths';
+import getSelectedKeys from 'utilities/getSelectedKeys';
 
 const MenuBar = props => {
   const selectedKeys = getSelectedKeys(props.location);

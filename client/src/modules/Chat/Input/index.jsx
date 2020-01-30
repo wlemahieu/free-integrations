@@ -1,35 +1,41 @@
-import React, { PureComponent } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Input, Row } from 'antd';
 
 const { Search } = Input;
 
-class ChatInput extends PureComponent {
-  componentDidUpdate() {
-    this.roseInput.focus();
-  }
+const ChatInput = props => {
+  const { disabledSubmit, input, onSearch, updateInput } = props;
+  const firstUpdate = useRef(true);
+  const roseInput = useRef(null);
 
-  render() {
-    const { disabledSubmit, input } = this.props;
-    return (
-      <Row className="centered" style={{ paddingTop: '40px' }}>
-        <Col span={12} offset={6}>
-          <Search
-            autoFocus
-            ref={(search) => { this.roseInput = search; }}
-            placeholder="Say something to Rose Watson"
-            enterButton
-            size="large"
-            onChange={e => this.props.updateInput(e.target.value)}
-            onSearch={() => this.props.onSearch(input)}
-            disabled={disabledSubmit}
-            value={input}
-          />
-        </Col>
-      </Row>
-    );
-  }
-}
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    // componentDidUpdate
+    roseInput.current.focus();
+  });
+
+  return (
+    <Row className="centered" style={{ paddingTop: '40px' }}>
+      <Col span={12} offset={6}>
+        <Search
+          autoFocus
+          ref={(search) => { roseInput.current = search; }}
+          placeholder="Say something to Rose Watson"
+          enterButton
+          size="large"
+          onChange={e => updateInput(e.target.value)}
+          onSearch={() => onSearch(input)}
+          disabled={disabledSubmit}
+          value={input}
+        />
+      </Col>
+    </Row>
+  );
+};
 
 ChatInput.propTypes = {
   disabledSubmit: PropTypes.bool,

@@ -33,7 +33,7 @@ exports[`Layout Foot should match snapshot 1`] = `
         </div>
       </li>
       <li
-        class="ant-menu-item"
+        class="ant-menu-item ant-menu-item-selected"
         role="menuitem"
       >
         <a

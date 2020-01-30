@@ -1,9 +1,8 @@
 import * as types from 'redux/actionTypes';
 
 const initialState = {
-  input: '',
-  inputs: [],
-  responses: []
+  responses: [],
+  error: {}
 };
 
 export default function (state = initialState, action) {
@@ -14,16 +13,10 @@ export default function (state = initialState, action) {
       responses: [...state.responses, action.payload]
     };
   }
-  case types.SAVE_USER_INPUT: {
+  case types.SAVE_AI_ERROR: {
     return {
       ...state,
-      inputs: [...state.inputs, action.payload.input]
-    };
-  }
-  case types.SAVE_USER_KEY: {
-    return {
-      ...state,
-      input: action.payload
+      error: action.payload
     };
   }
   default:

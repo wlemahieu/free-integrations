@@ -1,66 +1,93 @@
-import React, { PureComponent } from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ChatInput from 'modules/Chat/Input';
 import Conversation from 'modules/Chat/Conversation';
 
-class Chat extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      name: uuid(),
-      audioPlayed: false
+const reducer = (state, action) => {
+  const { payload, type } = action;
+  switch (type) {
+  case 'SET_AUDIO_PLAYED':
+    return {
+      ...state,
+      audioPlayed: payload
     };
+  case 'SET_INPUTS':
+    return {
+      ...state,
+      inputs: [...state.inputs, action.payload]
+    };
+  case 'SET_INPUT':
+    return {
+      ...state,
+      currentInput: payload
+    };
+  case 'SET_NAME':
+    return {
+      ...state,
+      name: payload
+    };
+  default:
+    throw new Error('No local reducer action provided');
   }
+};
 
-  onSearch = input => {
+const Chat = props => {
+  const { responses } = props;
+  const initialState = {
+    audioPlayed: false,
+    currentInput: '',
+    inputs: [],
+    name: uuid()
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { audioPlayed, currentInput, inputs, name } = state;
+
+  const onSearch = input => {
     if (input) {
-      const name = this.state.name;
-      const payload = {
-        input,
-        name
-      };
-      this.setState({ audioPlayed: false });
-      this.props.dispatch({ type: 'SAVE_USER_INPUT', payload });
+      const payload = { input, name };
+      dispatch({ type: 'SET_INPUTS', payload: input });
+      dispatch({ type: 'SET_INPUT', payload: '' });
+      dispatch({ type: 'SET_AUDIO_PLAYED', payload: false });
+      props.dispatch({ type: 'SEND_USER_INPUT', payload });
     }
   };
 
-  updateInput = input => (input ? this.props.dispatch({ type: 'USER_KEY_PRESS', payload: input }) : null);
-
-  render() {
-    const { input, inputs, responses } = this.props;
-    const disabledSubmit = inputs.length !== responses.length;
-    if (inputs.length && !disabledSubmit && !this.state.audioPlayed) {
-      const audio = new Audio(`http://localhost:3000/${this.state.name}-audio.wav?decache=${Math.random()}`);
-      audio.play();
-      this.setState({ audioPlayed: true });
+  const updateInput = input => {
+    if (input) {
+      dispatch({ type: 'SET_INPUT', payload: input });
     }
-    return (
-      <div>
-        <ChatInput
-          disabledSubmit={disabledSubmit}
-          input={input}
-          onSearch={this.onSearch}
-          updateInput={this.updateInput}
-        />
-        <Conversation inputs={inputs} responses={responses} />
-      </div>
-    );
+  };
+
+  const disabledSubmit = inputs.length !== responses.length;
+
+  if (inputs.length && !disabledSubmit && !audioPlayed) {
+    const audio = new Audio(`http://localhost:3000/${name}-audio.wav?decache=${Math.random()}`);
+    audio.play();
+    dispatch({ type: 'SET_AUDIO_PLAYED', payload: true });
   }
-}
+
+  return (
+    <>
+      <ChatInput
+        disabledSubmit={disabledSubmit}
+        input={currentInput}
+        onSearch={onSearch}
+        updateInput={updateInput}
+      />
+      <Conversation inputs={inputs} responses={responses} />
+    </>
+  );
+};
 
 Chat.propTypes = {
   dispatch: PropTypes.func,
-  input: PropTypes.string,
-  inputs: PropTypes.array,
   responses: PropTypes.array
 };
 
 Chat.defaultProps = {
   dispatch: () => {},
-  input: '',
-  inputs: [],
   responses: []
 };
 

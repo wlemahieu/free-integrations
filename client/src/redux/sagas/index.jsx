@@ -1,35 +1,24 @@
-import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import * as ChatApi from 'services/Chat';
 import * as types from 'redux/actionTypes';
 
 export function* sendInput(action) {
   try {
-    const inputResponse = yield call(ChatApi.sendInput, action.payload);
-    const payload = inputResponse.data;
+    const response = yield call(ChatApi.sendInput, action.payload);
+    const payload = response.data;
     yield put({ type: 'SAVE_AI_RESPONSE', payload });
-    yield put({ type: 'SAVE_USER_KEY', payload: '' });
   } catch (e) {
-    console.log('error ', e);
-    yield put({ type: 'AI_RESPONSE_FAILED', message: e.message });
+    const payload = e.message;
+    yield put({ type: 'SAVE_AI_ERROR', payload });
   }
 }
 
 function* watchSendInput() {
-  yield takeLatest(types.SAVE_USER_INPUT, sendInput);
-}
-
-export function* keyPress(action) {
-  const payload = action.payload;
-  yield put({ type: 'SAVE_USER_KEY', payload });
-}
-
-function* watchKeypress() {
-  yield takeEvery(types.USER_KEY_PRESS, keyPress);
+  yield takeLatest(types.SEND_USER_INPUT, sendInput);
 }
 
 export default function* rootSaga() {
   yield all([
-    watchKeypress,
     watchSendInput
   ].map(saga => fork(saga)));
 }
