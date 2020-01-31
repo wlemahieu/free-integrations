@@ -1,0 +1,43 @@
+{
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "lodash"
+        ],
+        [
+          "import",
+          {
+            "libraryName": "antd"
+          }
+        ]
+      ]
+    }
+  },
+  "plugins": [
+    [
+      "lodash"
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ]
+  ],
+  "presets": [
+    [
+      "react-app"
+    ],
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "node": 6
+        }
+      }
+    ]
+  ]
+}

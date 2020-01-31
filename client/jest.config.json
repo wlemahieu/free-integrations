@@ -1,0 +1,31 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "moduleNameMapper": {
+    ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+    ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js"
+  },
+  "modulePaths": [
+    "<rootDir>/src/"
+  ],
+  "setupFilesAfterEnv": [
+    "jest-prop-type-error",
+    "<rootDir>/src/jest.setup.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}"
+  ],
+  "transform": {
+    "^.+\\.[t|j]sx?$": "babel-jest"
+  },
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/"
+  ]
+}
