@@ -1,7 +1,8 @@
 # free-integrations
-An open-source full-stack web application provided for anyone's personal use. This is a constant work-in-progress with the main goal for me to demonstrate & improve my coding ability while having fun.
+An open-source full-stack web application provided for anyone's personal use. This is a constant work-in-progress with the main goal for me to demonstrate & improve my coding ability while having fun. If I'm lucky, someone will learn something from this.
+
 #### Main frontend dependencies:
-React.js, Redux, Ant-Design, Axios, Jest, Enzyme, ESLint
+React.js, Redux, Ant-Design, Axios, Jest, React Testing Library, ESLint
 #### Main backend dependencies:
 Express.js, Puppeteer, Redis, IBM Cloud API, NewsAPI
 
