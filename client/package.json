@@ -29,7 +29,7 @@
     "lint-check": "NODE_ENV=development npx eslint 'src/**/*.{js,jsx}' -f json -o ./lintout.json",
     "start": "yarn lint-check && PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest --config=jest.config.json",
     "dev": "cd ../server && yarn run dev"
   },
   "eslintConfig": {
@@ -63,9 +63,6 @@
     "babel-plugin-lodash": "^3.3.4",
     "babel-preset-react-app": "^9.1.0",
     "dotenv": "^8.2.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-react-app": "^5.1.0",

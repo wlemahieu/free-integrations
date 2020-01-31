@@ -5,7 +5,6 @@
   ],
   "moduleDirectories": [
     "node_modules",
-    "bower_components",
     "src"
   ],
   "moduleNameMapper": {
@@ -16,8 +15,7 @@
     "<rootDir>/src/"
   ],
   "setupFilesAfterEnv": [
-    "jest-prop-type-error",
-    "<rootDir>/src/jest.setup.js"
+    "jest-prop-type-error"
   ],
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}"

@@ -1,7 +1,8 @@
 import React from 'react';
-import { every, isArray, isString } from 'lodash';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import every from 'lodash/every';
+import isArray from 'lodash/isArray';
+import isString from 'lodash/isString';
+import { render } from '@testing-library/react';
 import Conversation from 'modules/Chat/Conversation';
 import { createTimelineData, createTimelineItems } from 'modules/Chat/Conversation/helper';
 
@@ -11,46 +12,26 @@ const timeline = createTimelineData(inputs, responses);
 
 let wrapper;
 beforeEach(() => {
-  wrapper = shallow(<Conversation inputs={inputs} responses={responses} />);
+  wrapper = render(
+    <Conversation inputs={inputs} responses={responses} />
+  );
+});
+afterEach(() => {
+  wrapper = undefined;
 });
 
 describe('<Conversation />', () => {
-  it('matches snapshot', () => {
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('should match snapshot', () => {
+    const { container } = wrapper;
+    expect(container).toMatchSnapshot();
   });
-  it('renders single row className="centered" gutter=0', () => {
-    const rows = wrapper.find('Row');
-    const { className, gutter } = rows.props();
-    expect(rows).toHaveLength(1);
-    expect(className).toBe('centered');
-    expect(gutter).toEqual(0);
+  /*
+  it('should render "Home" crumb', async () => {
+    const { container } = wrapper;
+    const crumb = await getAllByTitle(container, 'Home');
+    expect(crumb.length).toEqual(1);
   });
-  it('renders single column span=12 offset=6', () => {
-    const cols = wrapper.find('Col');
-    const { span, offset } = cols.props();
-    expect(cols).toHaveLength(1);
-    expect(span).toEqual(12);
-    expect(offset).toEqual(6);
-  });
-  it('renders single scrollbars', () => {
-    expect(wrapper.find('Scrollbars')).toHaveLength(1);
-  });
-  it('renders single timeline mode="alternate"', () => {
-    const timeline = wrapper.find('Timeline');
-    const { mode } = timeline.props();
-    expect(timeline).toHaveLength(1);
-    expect(mode).toBe('alternate');
-  });
-  it('renders six alternating color timeline items', () => {
-    let priorColor = 'blue';
-    const timelineItems = wrapper.find('TimelineItem');
-    timelineItems.forEach((node) => {
-      const color = node.props().color;
-      expect(color).not.toEqual(priorColor);
-      priorColor = color;
-    });
-    expect(timelineItems).toHaveLength(6);
-  });
+  */
 });
 
 describe('createTimelineData()', () => {

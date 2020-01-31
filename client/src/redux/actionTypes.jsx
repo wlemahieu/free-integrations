@@ -1,3 +1,5 @@
+export const LOCATION_CHANGE = 'LOCATION_CHANGE';
+
 export const SAVE_AI_RESPONSE = 'SAVE_AI_RESPONSE';
 export const SAVE_AI_ERROR = 'SAVE_AI_ERROR';
 export const SEND_USER_INPUT = 'SEND_USER_INPUT';

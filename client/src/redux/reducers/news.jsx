@@ -26,6 +26,9 @@ export default function (state = initialState, action) {
       sources: [...state.sources, action.payload.sources]
     };
   }
+  case types.LOCATION_CHANGE: {
+    return initialState;
+  }
   default:
     return state;
   }

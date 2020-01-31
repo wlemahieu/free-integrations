@@ -14,8 +14,8 @@ export const doSynthesizeText = (payload) => {
 		const params = {
 			text: payload.roseResponse,
 			accept: 'audio/wav',
-      // voice: 'en-GB_KateVoice'
-      voice: 'en-US_LisaVoice'
+			// voice: 'en-GB_KateVoice'
+			voice: 'en-US_LisaVoice'
 		};
 		const synthesizedStream = textToSpeech.synthesizeUsingWebSocket(params);
 		synthesizedStream.pipe(fs.createWriteStream(audioFileName));

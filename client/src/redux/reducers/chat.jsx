@@ -19,6 +19,9 @@ export default function (state = initialState, action) {
       error: action.payload
     };
   }
+  case types.LOCATION_CHANGE: {
+    return initialState;
+  }
   default:
     return state;
   }

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
   }
 };
 
-const Chat = props => {
+const Chat = React.memo(props => {
   const { responses } = props;
   const initialState = {
     audioPlayed: false,
@@ -43,6 +43,11 @@ const Chat = props => {
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const { audioPlayed, currentInput, inputs, name } = state;
+
+  // un-mount
+  useEffect(() => {
+    return () => props.dispatch({ type: 'LOCATION_CHANGE' });
+  }, [props]);
 
   const onSearch = input => {
     if (input) {
@@ -79,7 +84,7 @@ const Chat = props => {
       <Conversation inputs={inputs} responses={responses} />
     </>
   );
-};
+});
 
 Chat.propTypes = {
   dispatch: PropTypes.func,
