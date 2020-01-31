@@ -8,7 +8,7 @@ const extrapolateRoseText = text => {
 	return text.split(/\n/)[1].replace('Rose: ', '').trim(); // User is line 1, Rose is line 2, empty line 3.
 };
 
-export default async payload => {
+export const getRoseResponse = async payload => {
 	try {
 		const input = payload.input;
 		const name = payload.name;
