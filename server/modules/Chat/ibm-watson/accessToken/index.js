@@ -20,6 +20,6 @@ export const getAccessToken = async () => {
 	return token.toString();
 };
 
-export const setAccessToken = async (newToken) => {
+export const setAccessToken = async newToken => {
 	return await tedis.set("WATSON_ACCESS_TOKEN", newToken);
 };

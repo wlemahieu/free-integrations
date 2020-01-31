@@ -1,8 +1,9 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "fi-server",
+  "version": "1.0.4",
+  "private": true,
   "license": "MIT",
+  "main": "./index.js",
   "dependencies": {
     "cors": "^2.8.5",
     "dot-env": "^0.0.1",
@@ -17,12 +18,17 @@
   },
   "devDependencies": {
     "concurrently": "^5.0.2",
+    "link-module-alias": "^1.2.0",
     "nodemon": "^2.0.2"
   },
   "scripts": {
     "client": "cd ../client && yarn start",
     "server": "nodemon -r dotenv/config --experimental-modules index.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "postinstall": "link-module-alias"
+  },
+  "_moduleAliases": {
+    "modules" : "modules"
   },
   "type": "module"
 }

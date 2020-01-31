@@ -27,7 +27,7 @@ export const synthesizeText = (payload) => {
 	});
 };
 
-export const handleInput = async (payload) => {
+export const handleInput = async payload => {
 	const synthesizedText = await synthesizeText(payload);
 	return synthesizedText;
 };

@@ -4,11 +4,11 @@
 import puppeteer from 'puppeteer';
 
 const roseUrl = 'http://ec2-54-215-197-164.us-west-1.compute.amazonaws.com/speech.php';
-const extrapolateRoseText = (text) => {
+const extrapolateRoseText = text => {
 	return text.split(/\n/)[1].replace('Rose: ', '').trim(); // User is line 1, Rose is line 2, empty line 3.
 };
 
-export default async (payload) => {
+export default async payload => {
 	try {
 		const input = payload.input;
 		const name = payload.name;

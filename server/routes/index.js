@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { processInput } from '../modules/Chat/user-input/index.js';
+import { processInput } from 'modules/Chat/user-input/index.js';
 // import { newsSources } from '../newsapi/index.js';
 
 const router = express.Router();

@@ -1,6 +1,6 @@
 import fs from 'fs';
-import rose from '../rose/index.js';
-import { handleInput } from '../ibm-watson/synthesize-text/index.js';
+import rose from 'modules/Chat/rose/index.js';
+import { handleInput } from 'modules/Chat/ibm-watson/synthesize-text/index.js';
 
 export const processInput = async (payload, res) => {
 	const roseResponse = await rose(payload);
