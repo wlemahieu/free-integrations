@@ -3,4 +3,5 @@
 /conversations/*
 !conversations/.gitkeep
 yarn.lock
+yarn-error.log
 package-lock.json
