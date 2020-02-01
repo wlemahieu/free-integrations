@@ -9,20 +9,16 @@ import Foot from 'common/Layout/Foot';
 import store from 'redux/store';
 import './index.css';
 
-const rootNode = document.getElementById('root');
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <Layout>
+        <Head />
+        <Body />
+        <Foot />
+      </Layout>
+    </Router>
+  </Provider>
+);
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Layout>
-          <Head />
-          <Body />
-          <Foot />
-        </Layout>
-      </Router>
-    </Provider>
-  );
-};
-
-ReactDOM.render(<App />, rootNode);
+ReactDOM.render(<App />, document.getElementById('root'));

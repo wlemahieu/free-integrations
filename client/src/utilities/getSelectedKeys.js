@@ -1,4 +1,4 @@
-import allowedPaths from 'utilities/allowedPaths';
+import allowedPaths from 'utilities/allowedPaths.json';
 import getLocationPaths from 'utilities/getLocationPaths';
 
 export default location => {
