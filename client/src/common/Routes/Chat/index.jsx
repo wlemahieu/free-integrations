@@ -44,12 +44,15 @@ const Chat = React.memo(props => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { audioPlayed, currentInput, inputs, name } = state;
 
-  // un-mount
   useEffect(() => {
+    // mount
+    // unmount
     return () => props.dispatch({ type: 'LOCATION_CHANGE' });
-  }, [props]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const onSearch = input => {
+  const disabledSubmit = inputs.length !== responses.length;
+
+  const onSearch = input => (() => {
     if (input) {
       const payload = { input, name };
       dispatch({ type: 'SET_INPUTS', payload: input });
@@ -57,15 +60,9 @@ const Chat = React.memo(props => {
       dispatch({ type: 'SET_AUDIO_PLAYED', payload: false });
       props.dispatch({ type: 'SEND_USER_INPUT', payload });
     }
-  };
+  });
 
-  const updateInput = input => {
-    if (input) {
-      dispatch({ type: 'SET_INPUT', payload: input });
-    }
-  };
-
-  const disabledSubmit = inputs.length !== responses.length;
+  const updateInput = input => dispatch({ type: 'SET_INPUT', payload: input });
 
   if (inputs.length && !disabledSubmit && !audioPlayed) {
     const audio = new Audio(`http://localhost:3000/${name}-audio.wav?decache=${Math.random()}`);

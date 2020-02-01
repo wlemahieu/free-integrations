@@ -6,7 +6,7 @@ const License = () => {
   const history = useHistory();
   const footer = <Button key="back" onClick={() => history.goBack()}>Ok</Button>;
   return (
-    <div>
+    <>
       <Row className="centered">
         <Col span={12} offset={6}>
           <h1>License Agreement</h1>
@@ -24,7 +24,7 @@ const License = () => {
         <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
         <p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </Modal>
-    </div>
+    </>
   );
 };
 

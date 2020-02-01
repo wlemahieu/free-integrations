@@ -1,3 +1,3 @@
-import Api from 'services/Api';
+import API from 'services/API';
 
-export const sendInput = payload => Api.post('/chat', payload);
+export const sendInput = payload => API.post('/chat', payload);

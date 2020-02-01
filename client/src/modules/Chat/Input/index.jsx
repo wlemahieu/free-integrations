@@ -18,17 +18,21 @@ const ChatInput = props => {
     roseInput.current.focus();
   });
 
+  const setSearchRef = search => {
+    roseInput.current = search;
+  };
+
   return (
     <Row className="centered" style={{ paddingTop: '40px' }}>
       <Col span={12} offset={6}>
         <Search
           autoFocus
-          ref={(search) => { roseInput.current = search; }}
+          ref={setSearchRef}
           placeholder="Say something to Rose Watson"
           enterButton
           size="large"
           onChange={e => updateInput(e.target.value)}
-          onSearch={() => onSearch(input)}
+          onSearch={onSearch(input)}
           disabled={disabledSubmit}
           value={input}
         />

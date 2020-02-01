@@ -1,8 +1,8 @@
 import startCase from 'lodash/startCase';
-import allowedPaths from './allowedPaths';
-import getLocationPaths from './getLocationPaths';
+import allowedPaths from 'utilities/allowedPaths';
+import getLocationPaths from 'utilities/getLocationPaths';
 
-const getBreadcrumbs = location => {
+export default location => {
   const paths = getLocationPaths(location);
   const allowed = paths.filter(url => allowedPaths.includes(url));
   allowed.unshift('/home');
@@ -15,5 +15,3 @@ const getBreadcrumbs = location => {
   });
   return breadcrumbs;
 };
-
-export default getBreadcrumbs;

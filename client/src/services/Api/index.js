@@ -1,20 +1,14 @@
 import axios from 'axios';
+import axiosConfig from './axiosConfig';
 
-export const baseURL = 'http://localhost:3000';
-const apiConfig = {
-  baseURL,
-  timeout: 100000,
-  headers: {
-    accept: 'application/json',
-    'Content-Type': 'application/json; charset=UTF-8'
-  }
-};
+const baseURL = 'http://localhost:3000';
 
-class Api {
+class API {
   constructor(config) {
     if (!this.instance) {
       this.instance = axios.create({
-        ...apiConfig,
+        baseURL,
+        ...axiosConfig,
         ...config
       });
     }
@@ -43,6 +37,4 @@ class Api {
   }
 }
 
-const api = new Api();
-
-export default api;
+export default new API();
