@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ChatInput from 'modules/Chat/Input';
 import Conversation from 'modules/Chat/Conversation';
+import Voices from 'modules/Chat/Voices';
+import Context from './context';
 
 const reducer = (state, action) => {
   const { payload, type } = action;
@@ -34,7 +36,7 @@ const reducer = (state, action) => {
 };
 
 const Chat = React.memo(props => {
-  const { responses } = props;
+  const { dispatch: rispatch, responses } = props;
   const initialState = {
     audioPlayed: false,
     currentInput: '',
@@ -47,7 +49,7 @@ const Chat = React.memo(props => {
   useEffect(() => {
     // mount
     // unmount
-    return () => props.dispatch({ type: 'LOCATION_CHANGE' });
+    return () => rispatch({ type: 'LOCATION_CHANGE' });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const disabledSubmit = inputs.length !== responses.length;
@@ -58,7 +60,7 @@ const Chat = React.memo(props => {
       dispatch({ type: 'SET_INPUTS', payload: input });
       dispatch({ type: 'SET_INPUT', payload: '' });
       dispatch({ type: 'SET_AUDIO_PLAYED', payload: false });
-      props.dispatch({ type: 'SEND_USER_INPUT', payload });
+      rispatch({ type: 'SEND_INPUT', payload });
     }
   });
 
@@ -71,7 +73,8 @@ const Chat = React.memo(props => {
   }
 
   return (
-    <>
+    <Context.Provider value={{ rispatch }}>
+      <Voices />
       <ChatInput
         disabledSubmit={disabledSubmit}
         input={currentInput}
@@ -79,7 +82,7 @@ const Chat = React.memo(props => {
         updateInput={updateInput}
       />
       <Conversation inputs={inputs} responses={responses} />
-    </>
+    </Context.Provider>
   );
 });
 

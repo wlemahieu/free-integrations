@@ -1,6 +1,6 @@
 import fs from 'fs';
 import TextToSpeechV1 from 'ibm-watson/text-to-speech/v1.js';
-import authenticator from 'modules/Chat/ibm-watson/auth/index.js';
+import authenticator from '../auth/index.js';
 
 const instance = process.env.WATSON_TTS_INSTANCE;
 const baseUrl = process.env.WATSON_TTS_URL;

@@ -1,6 +1,7 @@
+console.log(process.cwd());
 import cors from 'cors';
 import express from 'express';
-import { getVoices, postInput } from 'modules/Chat/index.js';
+import { postInput } from '../modules/Chat/index.js';
 
 const router = express.Router();
 const corsOptions = {
@@ -8,7 +9,7 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 };
 
-router.get('/chat', cors(corsOptions), (req, res) => getVoices(res));
+// router.get('/chat', cors(corsOptions), (req, res) => getVoices(res));
 router.post('/chat', cors(corsOptions), (req, res) => postInput(req.query, res));
 // router.get('/news', (req, res) => newsSources(res));
 
