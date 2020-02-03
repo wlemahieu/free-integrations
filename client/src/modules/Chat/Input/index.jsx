@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Input, Select, Row } from 'antd';
+import ReactCountryFlag from 'react-country-flag';
+import findIndex from 'lodash/findIndex';
 
 const { Search } = Input;
 
@@ -18,6 +20,14 @@ const ChatInput = props => {
     roseInput.current.focus();
   });
 
+  const getVoice = () => {
+    if (voices.length) {
+      const index = findIndex(voices, { voice });
+      const newVoice = voices[index].name;
+      return newVoice;
+    }
+  };
+
   const setSearchRef = search => {
     roseInput.current = search;
   };
@@ -28,11 +38,16 @@ const ChatInput = props => {
         <Input.Group>
           <Select
             size="large"
-            defaultValue={voice}
+            value={getVoice()}
             style={{ width: '30%', marginRight: '4px' }}
             onChange={onVoiceChange}
           >
-            {voices.map((obj, key) => (<Select.Option key={key} value={key}>{obj.name}</Select.Option>))}
+            {voices.map((obj, key) => (
+              <Select.Option key={key} value={key}>
+                <ReactCountryFlag countryCode={obj.country} />
+                {obj.name}
+              </Select.Option>
+            ))}
           </Select>
           <Search
             autoFocus

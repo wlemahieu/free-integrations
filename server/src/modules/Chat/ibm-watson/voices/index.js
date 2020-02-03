@@ -21,18 +21,18 @@ const getCachedVoices = async () => tedis.get('CHAT_TTS_VOICES');
 const setCachedVoices = async voices => tedis.set('CHAT_TTS_VOICES', voices);
 
 export const getVoices = async () => {
-	try {
-	  const cachedVoices = await getCachedVoices();
-	  if (cachedVoices && cachedVoices.length) {
-	    return cachedVoices;
-	  }
-	  const { result: { voices } } = await textToSpeech.listVoices();
-		const voiceNames = voices.map(obj => {
-			return obj.name;
-		}).toString();
-	  await setCachedVoices(voiceNames);
-	  return voiceNames;
-	} catch (e) {
-		console.log(e);
-	}
+  try {
+    const cachedVoices = await getCachedVoices();
+    if (cachedVoices && cachedVoices.length) {
+      return cachedVoices;
+    }
+    const { result: { voices } } = await textToSpeech.listVoices();
+    const voiceNames = voices.map(obj => {
+      return obj.name;
+    }).toString();
+    await setCachedVoices(voiceNames);
+    return voiceNames;
+  } catch (e) {
+    throw new Error(e);
+  }
 };
