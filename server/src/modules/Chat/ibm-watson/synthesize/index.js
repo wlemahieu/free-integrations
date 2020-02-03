@@ -10,29 +10,29 @@ const url = `https://${baseUrl}/instances/${instance}`;
 let textToSpeech;
 
 (async () => {
-  let authenticator = await import(authModule);
-	textToSpeech = new TextToSpeechV1({ authenticator: authenticator.default, url });
+  const authenticator = await import(authModule);
+  textToSpeech = new TextToSpeechV1({ authenticator: authenticator.default, url });
 })();
 
 export const doSynthesizeText = (payload) => {
-	return new Promise ((resolve, reject) => {
-		const uuid = payload.name;
-		const audioFileName = `./src/conversations/${uuid}-audio.wav`;
-		const params = {
-			text: payload.roseResponse,
-			accept: 'audio/wav',
-			// voice: 'en-GB_KateVoice'
-			voice: 'en-US_LisaVoice'
-		};
-		const synthesizedStream = textToSpeech.synthesizeUsingWebSocket(params);
-		synthesizedStream.pipe(fs.createWriteStream(audioFileName));
-		synthesizedStream.on('error', (err) => {
-			reject(err);
-		});
-		synthesizedStream.on('close', (code, reason) => {
-			resolve(payload.roseResponse);
-		});
-	});
+  return new Promise((resolve, reject) => {
+    const uuid = payload.name;
+    const audioFileName = `./src/conversations/${uuid}-audio.wav`;
+    const params = {
+      text: payload.roseResponse,
+      accept: 'audio/wav',
+      // voice: 'en-GB_KateVoice'
+      voice: 'en-US_LisaVoice'
+    };
+    const synthesizedStream = textToSpeech.synthesizeUsingWebSocket(params);
+    synthesizedStream.pipe(fs.createWriteStream(audioFileName));
+    synthesizedStream.on('error', (err) => {
+      reject(err);
+    });
+    synthesizedStream.on('close', () => {
+      resolve(payload.roseResponse);
+    });
+  });
 };
 
-export const synthesizeText = async payload => await doSynthesizeText(payload);
+export const synthesizeText = async payload => doSynthesizeText(payload);

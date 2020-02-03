@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { join } from 'path';
 
 const roseModule = join(global.dirname, 'modules/Chat/rose/index.js');
@@ -9,21 +8,21 @@ let synth;
 
 (async () => {
   rose = await import(roseModule);
-	synth = await import(synthModule);
+  synth = await import(synthModule);
 })();
 
 export const postInput = async (payload, res) => {
-	const { getRoseResponse } = rose;
-	const { synthesizeText } = synth;
-	const roseResponse = await getRoseResponse(payload);
-	if (roseResponse) {
-		payload.roseResponse = roseResponse
-		const synthesizedText = await synthesizeText(payload);
-		if (synthesizedText) {
-			res.send(roseResponse);
-		}
-	}
-	res.status(404).end();
+  const { getRoseResponse } = rose;
+  const { synthesizeText } = synth;
+  const roseResponse = await getRoseResponse(payload);
+  if (roseResponse) {
+    payload.roseResponse = roseResponse;
+    const synthesizedText = await synthesizeText(payload);
+    if (synthesizedText) {
+      res.send(roseResponse);
+    }
+  }
+  res.status(404).end();
 };
 
 /*

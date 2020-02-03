@@ -1,33 +1,23 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb-base",
   "env": {
     "browser": true,
-    "node": true,
-    "jest/globals": true
+    "node": true
   },
   "plugins": [
-    "react",
-    "react-hooks",
-    "jest",
     "import"
   ],
-  "globals": {
-    "__DEV__": true,
-    "fetch": true
-  },
   "parser": "babel-eslint",
   "rules": {
     "indent": [2, 2],
     "no-tabs": 0,
     "no-mixed-operators": 0,
-    "react/no-unused-state": 0,
     "arrow-parens": 0,
     "import/no-extraneous-dependencies": 0,
     "arrow-body-style": [0, "as-needed"],
     "comma-dangle": ["error", "only-multiline"],
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
     "max-len": 0,
-    "react/no-danger": 0,
     "no-console": 0,
     "no-throw-literal": 0,
     "no-useless-escape": 0,
@@ -42,31 +32,19 @@
     "camelcase": 1,
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
-    "react/jsx-pascal-case": 0,
-    "react/jsx-one-expression-per-line": 0,
-    "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/no-unused-prop-types": 0,
-    "react/prop-types": 1,
-    "react/no-array-index-key": 0,
-    "react/prefer-stateless-function": 0,
-    "react/destructuring-assignment": 0,
     "no-plusplus": 0,
     "no-else-return": ["error", {"allowElseIf": true}],
-    "react/no-multi-comp": 0,
     "no-return-assign": 0,
     "import/no-unresolved": 0,
-    "import/extensions": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "import/extensions": 0
   },
   "settings": {
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["src", "./src"]
-        ],
-        "extensions": [".ts", ".js", ".jsx", ".json"]
+      "node": {
+        "extensions": [
+          ".js",
+          ".json"
+        ]
       }
     }
   }

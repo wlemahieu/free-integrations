@@ -10,7 +10,7 @@ const routesModule = join(global.dirname, 'routes', 'index.js');
 const app = express();
 const port = 3000;
 
-var staticFilesOptions = {
+const staticFilesOptions = {
   dotfiles: 'ignore',
   extensions: ['wav'],
   index: false,
@@ -19,7 +19,7 @@ var staticFilesOptions = {
 };
 
 (async () => {
-  let routes = await import(routesModule);
+  const routes = await import(routesModule);
   app.use('/', routes.default);
   app.use('/conversations', express.static('./src/conversations', staticFilesOptions));
   app.listen(port, () => console.log('\x1b[36m', `Free Integrations app listening on port ${port}!`));
