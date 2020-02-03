@@ -26,6 +26,7 @@ const ChatInput = props => {
       const newVoice = voices[index].name;
       return newVoice;
     }
+    return '';
   };
 
   const setSearchRef = search => {

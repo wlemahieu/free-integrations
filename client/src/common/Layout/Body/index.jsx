@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 import BreadcrumbTrail from 'common/Layout/BreadcrumbTrail';
-import Home from 'common/Routes/Home';
-import Chat from 'common/Routes/Chat';
-import License from 'common/Routes/License';
-import News from 'common/Routes/News';
+import Home from 'modules/Home';
+import Chat from 'modules/Chat';
+import License from 'modules/License';
+import News from 'modules/News';
 
 const { Content } = Layout;
 const Body = props => {
