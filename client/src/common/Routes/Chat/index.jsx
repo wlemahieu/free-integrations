@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ChatInput from 'modules/Chat/Input';
 import Conversation from 'modules/Chat/Conversation';
-import Voices from 'modules/Chat/Voices';
+// import Voices from 'modules/Chat/Voices';
 import Context from './context';
 
 const reducer = (state, action) => {
@@ -67,14 +67,13 @@ const Chat = React.memo(props => {
   const updateInput = input => dispatch({ type: 'SET_INPUT', payload: input });
 
   if (inputs.length && !disabledSubmit && !audioPlayed) {
-    const audio = new Audio(`http://localhost:3000/${name}-audio.wav?decache=${Math.random()}`);
+    const audio = new Audio(`http://localhost:3000/conversations/${name}-audio.wav?decache=${Math.random()}`);
     audio.play();
     dispatch({ type: 'SET_AUDIO_PLAYED', payload: true });
   }
 
   return (
     <Context.Provider value={{ rispatch }}>
-      <Voices />
       <ChatInput
         disabledSubmit={disabledSubmit}
         input={currentInput}

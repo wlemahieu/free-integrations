@@ -1,2 +1,22 @@
-./node_modules
+# DEPENDENCIES
+**/node_modules
+
+# TESTING
+**__mocks__
+**__tests__
+lintout.json
+
+# PRODUCTION
+**build
+
+# misc
+.DS_Store
+.env
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 yarn.lock
+package-lock.json
+
+conversations/**

@@ -1,4 +1,3 @@
-console.log(process.cwd());
 import cors from 'cors';
 import express from 'express';
 import { postInput } from '../modules/Chat/index.js';

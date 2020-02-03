@@ -1,9 +1,20 @@
 import fs from 'fs';
-import { getRoseResponse } from '../../modules/Chat/rose/index.js';
-import { synthesizeText } from '../../modules/Chat/ibm-watson/synthesize/index.js';
-// import { getAllVoices } from '../../modules/Chat/ibm-watson/voices/index.js';
+import { join } from 'path';
+
+const roseModule = join(global.dirname, 'modules/Chat/rose/index.js');
+const synthModule = join(global.dirname, 'modules/Chat/ibm-watson/synthesize/index.js');
+
+let rose;
+let synth;
+
+(async () => {
+  rose = await import(roseModule);
+	synth = await import(synthModule);
+})();
 
 export const postInput = async (payload, res) => {
+	const { getRoseResponse } = rose;
+	const { synthesizeText } = synth;
 	const roseResponse = await getRoseResponse(payload);
 	if (roseResponse) {
 		payload.roseResponse = roseResponse
@@ -23,5 +34,4 @@ export const getVoices = async res => {
 	}
 	res.status(404).end();
 };
-
 */
