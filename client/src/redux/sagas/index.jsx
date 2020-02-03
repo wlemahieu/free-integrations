@@ -1,11 +1,12 @@
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import * as ChatAPI from 'services/Chat';
 import * as types from 'redux/actionTypes';
+import * as helper from './helper.js';
 
 export function* getVoices() {
   try {
     const response = yield call(ChatAPI.getVoices);
-    const payload = response.data;
+    const payload = helper.processVoices(response.data);
     yield put({ type: 'SAVE_VOICES', payload });
   } catch (e) {
     const payload = e.message;

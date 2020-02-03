@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import ChatInput from 'modules/Chat/Input';
 import Conversation from 'modules/Chat/Conversation';
-// import Voices from 'modules/Chat/Voices';
 import Context from './context';
 
 const reducer = (state, action) => {
@@ -25,6 +24,11 @@ const reducer = (state, action) => {
       ...state,
       currentInput: payload
     };
+  case 'SET_VOICE':
+    return {
+      ...state,
+      currentVoice: payload
+    };
   case 'SET_NAME':
     return {
       ...state,
@@ -36,18 +40,20 @@ const reducer = (state, action) => {
 };
 
 const Chat = React.memo(props => {
-  const { dispatch: rispatch, responses } = props;
+  const { dispatch: rispatch, responses, voices } = props;
   const initialState = {
     audioPlayed: false,
     currentInput: '',
+    currentVoice: 'en-GB_KateVoice',
     inputs: [],
     name: uuid()
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { audioPlayed, currentInput, inputs, name } = state;
+  const { audioPlayed, currentInput, currentVoice, inputs, name } = state;
 
   useEffect(() => {
     // mount
+    rispatch({ type: 'GET_VOICES' });
     // unmount
     return () => rispatch({ type: 'LOCATION_CHANGE' });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -56,13 +62,19 @@ const Chat = React.memo(props => {
 
   const onSearch = input => (() => {
     if (input) {
-      const payload = { input, name };
+      const voice = currentVoice;
+      const payload = { input, name, voice };
       dispatch({ type: 'SET_INPUTS', payload: input });
       dispatch({ type: 'SET_INPUT', payload: '' });
       dispatch({ type: 'SET_AUDIO_PLAYED', payload: false });
       rispatch({ type: 'SEND_INPUT', payload });
     }
   });
+
+  const onVoiceChange = voice => {
+    const newVoice = voices[voice].voice;
+    dispatch({ type: 'SET_VOICE', payload: newVoice });
+  };
 
   const updateInput = input => dispatch({ type: 'SET_INPUT', payload: input });
 
@@ -77,8 +89,11 @@ const Chat = React.memo(props => {
       <ChatInput
         disabledSubmit={disabledSubmit}
         input={currentInput}
+        onVoiceChange={onVoiceChange}
         onSearch={onSearch}
         updateInput={updateInput}
+        voice={currentVoice}
+        voices={voices}
       />
       <Conversation inputs={inputs} responses={responses} />
     </Context.Provider>
@@ -87,12 +102,14 @@ const Chat = React.memo(props => {
 
 Chat.propTypes = {
   dispatch: PropTypes.func,
-  responses: PropTypes.array
+  responses: PropTypes.array,
+  voices: PropTypes.array
 };
 
 Chat.defaultProps = {
   dispatch: () => {},
-  responses: []
+  responses: [],
+  voices: []
 };
 
 const mapStateToProps = state => state.chat;

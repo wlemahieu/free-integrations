@@ -3,6 +3,7 @@ import { join } from 'path';
 import TextToSpeechV1 from 'ibm-watson/text-to-speech/v1.js';
 
 const authModule = join(global.dirname, 'modules', 'Chat', 'ibm-watson', 'auth', 'index.js');
+
 const instance = process.env.WATSON_TTS_INSTANCE;
 const baseUrl = process.env.WATSON_TTS_URL;
 const url = `https://${baseUrl}/instances/${instance}`;
@@ -21,8 +22,7 @@ export const doSynthesizeText = (payload) => {
     const params = {
       text: payload.roseResponse,
       accept: 'audio/wav',
-      // voice: 'en-GB_KateVoice'
-      voice: 'en-US_LisaVoice'
+      voice: payload.voice
     };
     const synthesizedStream = textToSpeech.synthesizeUsingWebSocket(params);
     synthesizedStream.pipe(fs.createWriteStream(audioFileName));
